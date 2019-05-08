@@ -100,7 +100,7 @@ public class ReservationsScreen {
 		frame = new JFrame();
 		frame.setTitle("\u0394\u03B9\u03B1\u03C7\u03B5\u03AF\u03C1\u03B9\u03C3\u03B7 \u039A\u03C1\u03B1\u03C4\u03AE\u03C3\u03B5\u03C9\u03BD");
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 976, 496);
+		frame.setBounds(100, 100, 976, 497);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 		
