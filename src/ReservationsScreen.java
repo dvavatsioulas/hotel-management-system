@@ -65,6 +65,7 @@ public class ReservationsScreen {
 	private int nightStays;
 	private int tempType=0;
 	private int tempCostForLabel=0;
+	
 	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -93,9 +94,6 @@ public class ReservationsScreen {
 		this.getFrame().setVisible(true);
 	}
 	
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		frame = new JFrame();
 		frame.setTitle("\u0394\u03B9\u03B1\u03C7\u03B5\u03AF\u03C1\u03B9\u03C3\u03B7 \u039A\u03C1\u03B1\u03C4\u03AE\u03C3\u03B5\u03C9\u03BD");
@@ -211,8 +209,6 @@ public class ReservationsScreen {
 		radioButtonGroup.add(threeBeds);
 		radioButtonGroup.add(fourBeds);
 		
-		
-		
 		JLabel label_1 = new JLabel("\u0394\u03B9\u03B1\u03BC\u03BF\u03BD\u03AE (\u03B2\u03C1\u03AC\u03B4\u03B9\u03B1):");
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		label_1.setBounds(83, 299, 114, 14);
@@ -268,7 +264,6 @@ public class ReservationsScreen {
 		roomNumberField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent arg0) {
-				
 				if(roomNumberField.getText()!=null) {
 					DefaultTableModel tableModel=(DefaultTableModel)reservationsTable.getModel();
 					TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(tableModel);
@@ -282,9 +277,7 @@ public class ReservationsScreen {
 		roomNumberField.setBounds(335, 424, 334, 23);
 		panel.add(roomNumberField);
 		roomNumberField.setColumns(10);
-		
-		
-		
+
 		reservationsTable.getTableHeader().setReorderingAllowed(false);
 		
 		JDateChooser fromDate = new JDateChooser();
@@ -382,7 +375,6 @@ public class ReservationsScreen {
 						
 						staysLabel.setText(Integer.toString(nightStays));
 						costLabel.setText((Integer.toString(tempCost)));
-						
 					}
 					else{
 						staysLabel.setText("--");
@@ -391,9 +383,7 @@ public class ReservationsScreen {
 					}
 				}
 				catch(IllegalArgumentException e) {
-					
 				}
-				
 			}
 		});
 		toDate.setBounds(132, 268, 105, 20);
@@ -404,7 +394,6 @@ public class ReservationsScreen {
 				int tempRoomNumber;
 				if(reservationsTable.getSelectionModel().isSelectionEmpty()) {
 					JOptionPane.showMessageDialog(null,"Δεν έχει επιλεχθεί κράτηση.");
-					
 				}
 				else {	
 					Object selectedRoomNumber = reservationsTable.getModel().getValueAt(reservationsTable.convertRowIndexToModel(reservationsTable.getSelectedRow())         , 0)         ;
@@ -442,9 +431,7 @@ public class ReservationsScreen {
 				Registry.viewRooms();
 			}
 		});
-		
 
-		
 		bookRoomBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String tempName=nameField.getText();
@@ -470,7 +457,7 @@ public class ReservationsScreen {
 						int tempRoomNumber=availableRoom.getRoomNumber();
 						
 						try {
-						reservation=new Reservation(tempName,tempType,availableRoom,Integer.parseInt(costLabel.getText()),Double.parseDouble(costLabel.getText()));
+						reservation=new Reservation(tempName,availableRoom,Integer.parseInt(costLabel.getText()),Double.parseDouble(costLabel.getText()));
 						Registry.reservations.add(reservation);
 						
 						JOptionPane.showMessageDialog(null, "Η κράτηση έγινε επιτυχώς!"+"\n"+ "Στοιχεία: "+ "\n" + "Αριθμός δωματίου:"+ tempRoomNumber + 
@@ -487,14 +474,10 @@ public class ReservationsScreen {
 						catch(NumberFormatException e) {
 							JOptionPane.showMessageDialog(null,"Παρακαλώ επιλέξτε ημερομηνίες check-in και check-out.");
 						}
-						
-						
 					}
 					else
-						JOptionPane.showMessageDialog(null, "Δεν υπάρχει διαθέσιμο δωμάτιο του επιλεγμένου τύπου."); //an den iparxei domatio emfanise minima
-						
+						JOptionPane.showMessageDialog(null, "Δεν υπάρχει διαθέσιμο δωμάτιο του επιλεγμένου τύπου."); //an den iparxei domatio emfanise minima	
 				}
-				
 				Registry.viewRooms();
 			}
 		});

@@ -8,10 +8,6 @@ public class Main {
 		Registry.createRooms(); //DIMIOURGIA DOMATION
 		
 		Registry.HS.setVisible(true);
-		
-		
-		
-	}
 
-	
+	}
 }

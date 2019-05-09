@@ -32,7 +32,6 @@ public abstract class Registry {
 		}
 	}
 
-
 	public static ArrayList<Reservation> getReservations(){
 		return reservations;
 	}
@@ -48,9 +47,4 @@ public abstract class Registry {
 		}
 		return selectedRoom;
 	}
-	
-	/*public static void addReservation(String name,int RoomType,Room room){
-		Reservation r=new Reservation(name,RoomType, room);
-		reservations.add(r);
-	}	*/
 }//END_OF_CLASS

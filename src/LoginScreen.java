@@ -138,8 +138,6 @@ public class LoginScreen extends JFrame {
 		gbc_passwordField.gridy = 2;
 		contentPane.add(passwordField, gbc_passwordField);
 		
-		
-		
 		JButton loginButton = new JButton("\u0395\u03AF\u03C3\u03BF\u03B4\u03BF\u03C2");
 		loginButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		loginButton.addActionListener(new ActionListener() {
@@ -170,8 +168,6 @@ public class LoginScreen extends JFrame {
 				}
 				else
 					JOptionPane.showMessageDialog(null,"Λάθος όνομα χρήστη ή κωδικός! Παρακαλώ ξαναπροσπαθήστε.");
-				
-				
 			}
 		});
 		loginButton.setForeground(Color.BLACK);
