@@ -64,7 +64,7 @@ public class ReservationsScreen {
 	private JTextField roomNumberField;
 	private int nightStays;
 	private int tempType=0;
-	
+	private int tempCostForLabel=0;
 	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -211,6 +211,8 @@ public class ReservationsScreen {
 		radioButtonGroup.add(threeBeds);
 		radioButtonGroup.add(fourBeds);
 		
+		
+		
 		JLabel label_1 = new JLabel("\u0394\u03B9\u03B1\u03BC\u03BF\u03BD\u03AE (\u03B2\u03C1\u03AC\u03B4\u03B9\u03B1):");
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		label_1.setBounds(83, 299, 114, 14);
@@ -281,28 +283,9 @@ public class ReservationsScreen {
 		panel.add(roomNumberField);
 		roomNumberField.setColumns(10);
 		
-		reservationsTable.getTableHeader().setReorderingAllowed(false);
 		
-		oneBed.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				tempType=1;
-			}
-		});
-		twoBeds.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				tempType=2;
-			}
-		});
-		threeBeds.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				tempType=3;
-			}
-		});
-		fourBeds.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				tempType=4;
-			}
-		});
+		
+		reservationsTable.getTableHeader().setReorderingAllowed(false);
 		
 		JDateChooser fromDate = new JDateChooser();
 		JDateChooser toDate = new JDateChooser();
@@ -310,7 +293,36 @@ public class ReservationsScreen {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-	
+		
+		oneBed.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				tempType=1;
+				costLabel.setText(   (Integer.toString(tempCostForLabel)));
+				fromDate.updateUI();
+			}
+		});
+		twoBeds.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				tempType=2;
+				costLabel.setText(   (Integer.toString(tempCostForLabel)));
+				fromDate.updateUI();
+			}
+		});
+		threeBeds.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				tempType=3;
+				costLabel.setText(   (Integer.toString(tempCostForLabel)));
+				fromDate.updateUI();
+			}
+		});
+		fourBeds.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				tempType=4;
+				costLabel.setText(   (Integer.toString(tempCostForLabel)));
+				fromDate.updateUI();
+			}
+		});
+		
 		reservationsTable.setDefaultEditor(Object.class, null);
 		
 		fromDate.addPropertyChangeListener(new PropertyChangeListener() {
@@ -330,7 +342,7 @@ public class ReservationsScreen {
 							tempCost=CHARGE_PER_NIGHT_3B * nightStays;
 						else 
 							tempCost=CHARGE_PER_NIGHT_4B * nightStays;
-						
+						tempCostForLabel=tempCost;
 						
 						staysLabel.setText(Integer.toString(nightStays));
 						costLabel.setText(   (Integer.toString(tempCost)));
@@ -369,7 +381,7 @@ public class ReservationsScreen {
 							tempCost=CHARGE_PER_NIGHT_4B * nightStays;
 						
 						staysLabel.setText(Integer.toString(nightStays));
-						costLabel.setText(   (Integer.toString(tempCost)));
+						costLabel.setText((Integer.toString(tempCost)));
 						
 					}
 					else{
@@ -469,6 +481,8 @@ public class ReservationsScreen {
 						costLabel.setText("-- €");
 						fromDate.setCalendar(null);
 						toDate.setCalendar(null);
+						nameField.setText(null);
+						radioButtonGroup.clearSelection();
 						}
 						catch(NumberFormatException e) {
 							JOptionPane.showMessageDialog(null,"Παρακαλώ επιλέξτε ημερομηνίες check-in και check-out.");
@@ -480,8 +494,7 @@ public class ReservationsScreen {
 						JOptionPane.showMessageDialog(null, "Δεν υπάρχει διαθέσιμο δωμάτιο του επιλεγμένου τύπου."); //an den iparxei domatio emfanise minima
 						
 				}
-				nameField.setText(null);
-				radioButtonGroup.clearSelection();
+				
 				Registry.viewRooms();
 			}
 		});
