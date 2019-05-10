@@ -58,7 +58,7 @@ public class HomeScreen extends JFrame {
 		contentPane.setLayout(gbl_contentPane);
 		try { 
 			  
-            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName()); 
+            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
         } 
         catch (Exception e) { 
             System.out.println("Look and Feel not set"); 

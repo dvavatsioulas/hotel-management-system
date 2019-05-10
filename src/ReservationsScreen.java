@@ -104,7 +104,7 @@ public class ReservationsScreen {
 		
 		try { 
 			  
-            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName()); 
+            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
         } 
         catch (Exception e) { 
             System.out.println("Look and Feel not set"); 
