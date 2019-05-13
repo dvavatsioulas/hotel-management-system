@@ -52,6 +52,10 @@ import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 public class ReservationsScreen extends JFrame{
 
@@ -60,9 +64,10 @@ public class ReservationsScreen extends JFrame{
 	static final int CHARGE_PER_NIGHT_3B=100;
 	static final int CHARGE_PER_NIGHT_4B=120;
 	
+
 	private JTextField nameField;
 	private Reservation reservation;
-	private JTable reservationsTable;
+	private static JTable reservationsTable;
 	private JTextField roomNumberField;
 	private int nightStays;
 	private int tempType=0;
@@ -73,6 +78,15 @@ public class ReservationsScreen extends JFrame{
 	 */
 	 
 	public ReservationsScreen() {
+		
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				setVisible(false);
+				Main.HS.setVisible(true);
+			}
+		});
+		
 		try { 
 	        UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel"); 
 	        SwingUtilities.updateComponentTreeUI(this);
@@ -80,17 +94,12 @@ public class ReservationsScreen extends JFrame{
 		initialize();
 	}
 
-	public void setReservationsVisible() {
-		this.setVisible(true);
-	}
-	
-	
-	
 	private void initialize() {
+		
+		setVisible(false);
 		setTitle("\u0394\u03B9\u03B1\u03C7\u03B5\u03AF\u03C1\u03B9\u03C3\u03B7 \u039A\u03C1\u03B1\u03C4\u03AE\u03C3\u03B5\u03C9\u03BD");
 		setResizable(false);
 		setBounds(100, 100, 996, 503);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		
 	
@@ -124,6 +133,14 @@ public class ReservationsScreen extends JFrame{
 				"\u0391\u03C1.\u0394\u03C9\u03BC.", "\u039F\u03BD\u03BF\u03BC\u03B1\u03C4\u03B5\u03C0\u03CE\u03BD\u03C5\u03BC\u03BF", "\u03A4\u03CD\u03C0\u03BF\u03C2 \u0394\u03C9\u03BC.", "\u039A\u03CC\u03C3\u03C4\u03BF\u03C2 \u0394\u03B9\u03B1\u03BC\u03BF\u03BD\u03AE\u03C2 (\u20AC)", "\u03A3\u03C5\u03BD. \u03A7\u03C1\u03AD\u03C9\u03C3\u03B7 (\u20AC)"
 			}
 		));
+		
+		addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentShown(ComponentEvent e) {
+				((DefaultTableModel)reservationsTable.getModel()).fireTableDataChanged();
+			}
+		});
+		
 		reservationsTable.getColumnModel().getColumn(0).setResizable(false);
 		reservationsTable.getColumnModel().getColumn(0).setPreferredWidth(53);
 		reservationsTable.getColumnModel().getColumn(1).setResizable(false);
@@ -458,5 +475,22 @@ public class ReservationsScreen extends JFrame{
 				Registry.viewRooms();
 			}
 		});
+	}
+	
+	public void updateChargeInTable(int roomNo) {
+		double tempCharge=0;
+		for(Reservation r:Registry.reservations) {
+			if(roomNo==r.getRoom().getRoomNumber()) {
+				tempCharge=r.getTotalCharge();
+		}
+		
+		for(int i = 0; i < reservationsTable.getRowCount(); i++){//For each row
+	        	if(reservationsTable.getModel().getValueAt(i, 0).equals(roomNo)) {
+	        		reservationsTable.getModel().setValueAt(tempCharge, i, 4);
+	        	}
+	    }
+		
+		
+		}
 	}
 }//END_OF_CLASS

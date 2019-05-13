@@ -2,14 +2,14 @@ public class Reservation {
 		private String clientName;
 		private Room room;
 		private int stayCost;
-		private double totalCost;
+		private double totalCharge;
 		
 		public Reservation(String name,Room room,int stayCost,double totalCost)
 		{
 			this.clientName=name;
 			this.room=room;
 			this.stayCost=stayCost;
-			this.totalCost=totalCost;
+			this.totalCharge=totalCost;
 		}
 		
 		public Room getRoom()
@@ -22,8 +22,16 @@ public class Reservation {
 			return clientName;
 		}
 
-		public void setTotalCost(double totalCost) {
-			this.totalCost = totalCost;
+		public void setTotalCharge(double totalCharge) {
+			this.totalCharge = totalCharge;
 		}
+
+		public double getTotalCharge() {
+			return totalCharge;
+		}
+
+		
+		
+		
 		
 }//END_OF_CLASS

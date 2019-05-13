@@ -13,6 +13,8 @@ import javax.swing.AbstractListModel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -27,26 +29,35 @@ import java.awt.Color;
 import java.awt.Component;
 import javax.swing.UIManager;
 
-public class OrderScreen extends JFrame
+public class BarScreen extends JFrame
 {	
 	private JPanel contentPane;
 	private JList list;
 	private int Quantity;
 	private JList list_1;
 	private JTable table;
-	private JTextField TotalPrice;
+	private JTextField orderChargeField;
 	private JLabel lblNewLabel;
 	private Double TotalP = 0.0;
-	private JButton btnNewButton;
+	private JButton deleteButton;
 	private JScrollPane scrollPane_1;
+
 	
 	private ArrayList<Product> deserts = new ArrayList<>();
 	private ArrayList<Product> drinks = new ArrayList<>();
 	private ArrayList<Product> salads = new ArrayList<>();
 	private ArrayList<Product> mainCourse = new ArrayList<>();
-	private JTextField textField;
+	private JTextField roomNoField;
 
-	public OrderScreen() {
+	public BarScreen() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				setVisible(false);
+				Main.HS.setVisible(true);
+			}
+		});
+		
 		try { 
 	        UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel"); 
 	        SwingUtilities.updateComponentTreeUI(this);
@@ -56,20 +67,17 @@ public class OrderScreen extends JFrame
 	
 	private void initialize() {
 		
-		try { 
-	        UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel"); 
-	        SwingUtilities.updateComponentTreeUI(this);
-	    } catch(Exception ignored){}
-		
+		setVisible(true);
 		setResizable(false);
 		setTitle("Order Screen");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 807, 429);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 				
+		setLocationRelativeTo(null);
+		
 		deserts.add(new Product("Πανακότα",3));
 		deserts.add(new Product("Παγωτό (1 μπάλα)",2));
 		deserts.add(new Product("Τάρτα Φρούτων",2.5));
@@ -113,13 +121,13 @@ public class OrderScreen extends JFrame
 		spinner_mainCourse.setBounds(124, 167, 45, 22);
 		panel.add(spinner_mainCourse);
 		
-		TotalPrice = new JTextField();
-		TotalPrice.setFont(new Font("Tahoma", Font.BOLD, 16));
-		TotalPrice.setEditable(false);
-		TotalPrice.setText("" + TotalP);
-		TotalPrice.setBounds(710, 326, 67, 25);
-		panel.add(TotalPrice);
-		TotalPrice.setColumns(10);
+		orderChargeField = new JTextField();
+		orderChargeField.setFont(new Font("Tahoma", Font.BOLD, 16));
+		orderChargeField.setEditable(false);
+		orderChargeField.setText("" + TotalP);
+		orderChargeField.setBounds(710, 326, 67, 25);
+		panel.add(orderChargeField);
+		orderChargeField.setColumns(10);
 		
 		scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(244, 11, 533, 313);
@@ -150,9 +158,9 @@ public class OrderScreen extends JFrame
 		lblNewLabel.setBounds(608, 325, 99, 26);
 		panel.add(lblNewLabel);
 		
-		btnNewButton = new JButton("\u0394\u03B9\u03B1\u03B3\u03C1\u03B1\u03C6\u03AE \u0395\u03C0\u03B9\u03BB\u03B5\u03B3\u03BC\u03AD\u03BD\u03BF\u03C5");
-		btnNewButton.setForeground(new Color(204, 0, 51));
-		btnNewButton.addActionListener(new ActionListener() {
+		deleteButton = new JButton("\u0394\u03B9\u03B1\u03B3\u03C1\u03B1\u03C6\u03AE \u0395\u03C0\u03B9\u03BB\u03B5\u03B3\u03BC\u03AD\u03BD\u03BF\u03C5");
+		deleteButton.setForeground(new Color(204, 0, 51));
+		deleteButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				
@@ -165,15 +173,15 @@ public class OrderScreen extends JFrame
 					TotalP=TotalP-tempPartialCost;
 					
 					((DefaultTableModel)table.getModel()).removeRow(table.getSelectedRow());
-					TotalPrice.setText(TotalP+"");
+					orderChargeField.setText(TotalP+"");
 				} catch (ArrayIndexOutOfBoundsException e) {
 					JOptionPane.showMessageDialog(null,"Δεν υπάρχει κάποιο προϊόν για να διαγραφεί.");
 				}
 			}
 		});
 		
-		btnNewButton.setBounds(244, 326, 175, 26);
-		panel.add(btnNewButton);
+		deleteButton.setBounds(244, 326, 175, 26);
+		panel.add(deleteButton);
 		
 		JComboBox desertsComboBox = new JComboBox();
 		desertsComboBox.setModel(new DefaultComboBoxModel(new String[] {"\u0395\u03C0\u03B9\u03BB\u03AD\u03BE\u03C4\u03B5", "\u03A0\u03B1\u03BD\u03B1\u03BA\u03CC\u03C4\u03B1", "\u03A0\u03B1\u03B3\u03C9\u03C4\u03CC (1 \u03BC\u03C0\u03AC\u03BB\u03B1)", "\u03A4\u03AC\u03C1\u03C4\u03B1 \u03A6\u03C1\u03BF\u03CD\u03C4\u03C9\u03BD", "\u03A4\u03C1\u03AF\u03B3\u03C9\u03BD\u03BF \u03A0\u03B1\u03BD\u03BF\u03C1\u03AC\u03BC\u03B1\u03C4\u03BF\u03C2", "\u039A\u03B1\u03C1\u03B9\u03CC\u03BA\u03B1"}));
@@ -207,7 +215,7 @@ public class OrderScreen extends JFrame
 						
 						TotalP += p.getPrice()*(Integer)spinner_drinks.getValue();
 						System.out.println(TotalP);
-						TotalPrice.setText("" + TotalP);					
+						orderChargeField.setText("" + TotalP);					
 					}
 				}
 			}
@@ -227,7 +235,7 @@ public class OrderScreen extends JFrame
 						
 					TotalP += p.getPrice()*(Integer)spinner_deserts.getValue();
 					System.out.println(TotalP);
-					TotalPrice.setText("" + TotalP);		
+					orderChargeField.setText("" + TotalP);		
 					}
 				}
 			}
@@ -247,7 +255,7 @@ public class OrderScreen extends JFrame
 						
 					TotalP += p.getPrice()*(Integer)spinner_salads.getValue();
 					System.out.println(TotalP);
-					TotalPrice.setText("" + TotalP);
+					orderChargeField.setText("" + TotalP);
 					}
 				}
 			}
@@ -267,7 +275,7 @@ public class OrderScreen extends JFrame
 						
 					TotalP += p.getPrice()*(Integer)spinner_mainCourse.getValue();
 					System.out.println(TotalP);
-					TotalPrice.setText("" + TotalP);
+					orderChargeField.setText("" + TotalP);
 					}
 				}				
 			}
@@ -304,19 +312,35 @@ public class OrderScreen extends JFrame
 		label_5.setBounds(31, 294, 198, 22);
 		panel.add(label_5);
 		
-		textField = new JTextField();
-		textField.setBounds(710, 358, 67, 22);
-		panel.add(textField);
-		textField.setColumns(10);
+		roomNoField = new JTextField();
+		roomNoField.setBounds(710, 358, 67, 22);
+		panel.add(roomNoField);
+		roomNoField.setColumns(10);
 		
 		JLabel label_3 = new JLabel("\u0391\u03C1.\u0394\u03C9\u03BC\u03B1\u03C4\u03AF\u03BF\u03C5:");
 		label_3.setFont(new Font("Tahoma", Font.BOLD, 13));
 		label_3.setBounds(608, 362, 95, 14);
 		panel.add(label_3);
 		
-		JButton button = new JButton("\u0391\u03C0\u03BF\u03C3\u03C4\u03BF\u03BB\u03AE \u03A0\u03B1\u03C1\u03B1\u03B3\u03B3\u03B5\u03BB\u03AF\u03B1\u03C2");
-		button.setForeground(new Color(0, 0, 204));
-		button.setBounds(421, 326, 175, 26);
-		panel.add(button);
+		JButton sendOrderButton = new JButton("\u0391\u03C0\u03BF\u03C3\u03C4\u03BF\u03BB\u03AE \u03A0\u03B1\u03C1\u03B1\u03B3\u03B3\u03B5\u03BB\u03AF\u03B1\u03C2");
+		sendOrderButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(table.getModel().getRowCount()==0) {
+					JOptionPane.showMessageDialog(null, "Δεν έχει προστεθεί κάποιο προϊόν");
+				}
+				else {
+					if(Registry.addChargeToReservation(Integer.parseInt(roomNoField.getText())		, TotalP)==true) {
+						JOptionPane.showMessageDialog(null,"Η παραγγελία έχει καταχωρηθεί επιτυχώς.");
+					}
+					else {
+						JOptionPane.showMessageDialog(null,"Δεν είναι δυνατή η παραγγελία για αυτό το δωμάτιο. Πληκτρολογήστε έναν άλλον αριθμό δωματίου.");
+					}
+				}
+	
+			}
+		});
+		sendOrderButton.setForeground(new Color(0, 0, 204));
+		sendOrderButton.setBounds(421, 326, 175, 26);
+		panel.add(sendOrderButton);
 	}
 }

@@ -32,13 +32,13 @@ import java.awt.Insets;
 public class LoginScreen extends JFrame {
 
 	private static final String USERNAME1="reception";
-	private static final String PASSWORD1="hotel2019reception";
+	private static final String PASSWORD1="reception";
 	
 	private static final String USERNAME2="bar";
-	private static final String PASSWORD2="hotel2019bar";
+	private static final String PASSWORD2="bar";
 	
 	private static final String USERNAME3="activities";
-	private static final String PASSWORD3="hotel2019activities";
+	private static final String PASSWORD3="activities";
 	
 	private JPanel contentPane;
 	private JTextField usernameField;
@@ -55,7 +55,7 @@ public class LoginScreen extends JFrame {
 	
 	private void initialize() {
 	
-		
+		setVisible(true);
 		setTitle("\u0395\u03AF\u03C3\u03BF\u03B4\u03BF\u03C2 \u03A7\u03C1\u03AE\u03C3\u03C4\u03B7");
 		setResizable(false);
 		setBounds(100, 100, 394, 192);
@@ -105,25 +105,22 @@ public class LoginScreen extends JFrame {
 				String tempPassword = 	String.valueOf(passwordField.getPassword());
 				if(tempUsername.equals(USERNAME1) && tempPassword.equals(PASSWORD1)) {
 					JOptionPane.showMessageDialog(null,"Σύνδεση επιτυχής.");
-					ReservationsScreen RS = new ReservationsScreen();
-					RS.setReservationsVisible();
-					Registry.HS.setVisible(false);
-					Registry.LS.setVisible(false);
+					Registry.RS.setVisible(true);
+					Main.HS.setVisible(false);
+					setVisible(false);
 				}
 				else if(tempUsername.equals(USERNAME2) && tempPassword.equals(PASSWORD2)) {
 					JOptionPane.showMessageDialog(null,"Σύνδεση επιτυχής.");
-					ReservationsScreen RS = new ReservationsScreen();
-					RS.setReservationsVisible();						//PROSOXI THELOUN DIORTHOSI OTAN TA SINDESOUME
-					Registry.HS.setVisible(false);
-					Registry.LS.setVisible(false);
+					BarScreen BS = new BarScreen();						
+					Main.HS.setVisible(false);
+					setVisible(false);
 
 				}
 				else if(tempUsername.equals(USERNAME3) && tempPassword.equals(PASSWORD3)) {
 					JOptionPane.showMessageDialog(null,"Σύνδεση επιτυχής.");
-					ReservationsScreen RS = new ReservationsScreen();   //PROSOXI THELOUN DIORTHOSI OTAN TA SINDESOUME
-					RS.setReservationsVisible();
-					Registry.HS.setVisible(false);
-					Registry.LS.setVisible(false);
+					//ACTIVITIES SCREEN
+					Main.HS.setVisible(false);
+					setVisible(false);
 				}
 				else
 					JOptionPane.showMessageDialog(null,"Λάθος όνομα χρήστη ή κωδικός! Παρακαλώ ξαναπροσπαθήστε.");
@@ -147,5 +144,7 @@ public class LoginScreen extends JFrame {
 		
 		helpButton.setFont(new Font("Tahoma", Font.BOLD, 15));
 		contentPane.add(helpButton);
+		
+		
 	}
 }

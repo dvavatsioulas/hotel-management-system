@@ -10,8 +10,7 @@ public abstract class Registry {
 	public static ArrayList<Room> rooms = new ArrayList<>();
 	public static Random random = new Random();
 	
-	public static HomeScreen HS = new HomeScreen();
-	public static LoginScreen LS = new LoginScreen();
+	public static ReservationsScreen RS = new ReservationsScreen();
 	
 	public static void createRooms() { // dimiourgoume tin lista me ta domatia tou ksenodoxeioy. o arithmos ton krevatiwn epilegetai apo ti random gia kathe domatio
 		int i;
@@ -46,5 +45,18 @@ public abstract class Registry {
 			}
 		}
 		return selectedRoom;
+	}
+	
+	public static boolean addChargeToReservation(int roomNo, double charge) {
+		for(Reservation r:reservations) {
+			if(roomNo==r.getRoom().getRoomNumber()) {
+				double previousCharge=r.getTotalCharge();
+				
+				r.setTotalCharge(previousCharge+charge);
+				Registry.RS.updateChargeInTable(roomNo);
+				return true;
+			}
+		}
+		return false;
 	}
 }//END_OF_CLASS

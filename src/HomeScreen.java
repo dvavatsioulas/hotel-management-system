@@ -23,8 +23,9 @@ public class HomeScreen extends JFrame {
 
 	
 	private JPanel contentPane;
-	public static LoginScreen LS = new LoginScreen();
-
+	private LoginScreen LS;
+	private BarScreen BS;
+	
 	public HomeScreen() {
 		try { 
 	        UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel"); 
@@ -34,6 +35,7 @@ public class HomeScreen extends JFrame {
 	}
 	
 	private void initialize() {
+		setVisible(true);
 		setResizable(false);
 		setTitle("\u03A3\u03CD\u03C3\u03C4\u03B7\u03BC\u03B1 \u0394\u03B9\u03B1\u03C7\u03B5\u03AF\u03C1\u03B9\u03C3\u03B7\u03C2 \u039E\u03B5\u03BD\u03BF\u03B4\u03BF\u03C7\u03B5\u03AF\u03BF\u03C5");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -54,7 +56,7 @@ public class HomeScreen extends JFrame {
 		JButton viewBarButton = new JButton("\u0395\u03C3\u03C4\u03B9\u03B1\u03C4\u03CC\u03C1\u03B9\u03BF-\u039C\u03C0\u03B1\u03C1");
 		viewBarButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Registry.LS.setVisible(true);
+				LS=new LoginScreen();
 			}
 		});
 		
@@ -62,7 +64,7 @@ public class HomeScreen extends JFrame {
 		viewReservationsButton.setFont(new Font("Tahoma", Font.BOLD, 14));
 		viewReservationsButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Registry.LS.setVisible(true);
+				LS=new LoginScreen();
 			}
 		});
 		
@@ -93,7 +95,7 @@ public class HomeScreen extends JFrame {
 		JButton viewActivitiesButton = new JButton("\u0394\u03C1\u03B1\u03C3\u03C4\u03B7\u03C1\u03B9\u03CC\u03C4\u03B7\u03C4\u03B5\u03C2");
 		viewActivitiesButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Registry.LS.setVisible(true);
+				LS=new LoginScreen();
 			}
 		});
 		viewActivitiesButton.setFont(new Font("Tahoma", Font.BOLD, 14));
