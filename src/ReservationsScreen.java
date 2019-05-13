@@ -249,7 +249,7 @@ public class ReservationsScreen extends JFrame{
 		
 		roomNumberField.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
+			public void mousePressed(MouseEvent arg0) {
 				roomNumberField.setText(null);
 			}
 		});
@@ -410,9 +410,10 @@ public class ReservationsScreen extends JFrame{
 					JOptionPane.showMessageDialog(null,"Η κράτηση του δωματίου "+tempRoomNumber +" διαγράφηκε επιτυχώς.");
 					
 					roomNumberField.setText(" ");  // adeiazo to textfield, kai pleon den efarmozetai kanena filtro sto jtable 
-					roomNumberField.requestFocus();
+					
 					   try
 					     {
+						   		 roomNumberField.requestFocus();
 					             Robot robot = new Robot();
 					             robot.keyPress(KeyEvent.VK_BACK_SPACE);
 					             robot.keyRelease(KeyEvent.VK_BACK_SPACE);
