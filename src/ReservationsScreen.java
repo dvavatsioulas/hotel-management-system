@@ -46,18 +46,20 @@ import java.awt.event.MouseMotionAdapter;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
 
-public class ReservationsScreen {
+public class ReservationsScreen extends JFrame{
 
 	static final int CHARGE_PER_NIGHT_1B=35; //XREOSI ANA VRADI GIA x BEDS
 	static final int CHARGE_PER_NIGHT_2B=70;
 	static final int CHARGE_PER_NIGHT_3B=100;
 	static final int CHARGE_PER_NIGHT_4B=120;
 	
-	private JFrame frame;
 	private JTextField nameField;
 	private Reservation reservation;
 	private JTable reservationsTable;
@@ -66,56 +68,39 @@ public class ReservationsScreen {
 	private int tempType=0;
 	private int tempCostForLabel=0;
 	
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ReservationsScreen window = new ReservationsScreen();  //PROSOXI!!!! I MAIN PREPEI NA FEVGEI APTO GUI.
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
-
-	public JFrame getFrame() {
-		return frame;
-	}
-
 	/**
 	 * Create the application.
 	 */
+	 
 	public ReservationsScreen() {
+		try { 
+	        UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel"); 
+	        SwingUtilities.updateComponentTreeUI(this);
+	    } catch(Exception ignored){}
 		initialize();
 	}
 
 	public void setReservationsVisible() {
-		this.getFrame().setVisible(true);
+		this.setVisible(true);
 	}
 	
+	
+	
 	private void initialize() {
-		frame = new JFrame();
-		frame.setTitle("\u0394\u03B9\u03B1\u03C7\u03B5\u03AF\u03C1\u03B9\u03C3\u03B7 \u039A\u03C1\u03B1\u03C4\u03AE\u03C3\u03B5\u03C9\u03BD");
-		frame.setResizable(false);
-		frame.setBounds(100, 100, 976, 497);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setLocationRelativeTo(null);
+		setTitle("\u0394\u03B9\u03B1\u03C7\u03B5\u03AF\u03C1\u03B9\u03C3\u03B7 \u039A\u03C1\u03B1\u03C4\u03AE\u03C3\u03B5\u03C9\u03BD");
+		setResizable(false);
+		setBounds(100, 100, 996, 503);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
 		
-		try { 
-			  
-            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-        } 
-        catch (Exception e) { 
-            System.out.println("Look and Feel not set"); 
-        } 
-		
+	
 		JPanel panel = new JPanel();
-		frame.getContentPane().add(panel, BorderLayout.CENTER);
+		panel.setBorder(new EmptyBorder(0, 0, 0, 0));
+		getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
 		nameField = new JTextField();
-		nameField.setBounds(125, 61, 200, 23);
+		nameField.setBounds(125, 61, 200, 30);
 		panel.add(nameField);
 		nameField.setColumns(10);
 		
@@ -126,7 +111,7 @@ public class ReservationsScreen {
 		panel.add(bookRoomBtn);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(335, 17, 625, 400);
+		scrollPane.setBounds(335, 17, 640, 400);
 		panel.add(scrollPane);
 		
 		reservationsTable = new JTable();
@@ -138,69 +123,61 @@ public class ReservationsScreen {
 			new String[] {
 				"\u0391\u03C1.\u0394\u03C9\u03BC.", "\u039F\u03BD\u03BF\u03BC\u03B1\u03C4\u03B5\u03C0\u03CE\u03BD\u03C5\u03BC\u03BF", "\u03A4\u03CD\u03C0\u03BF\u03C2 \u0394\u03C9\u03BC.", "\u039A\u03CC\u03C3\u03C4\u03BF\u03C2 \u0394\u03B9\u03B1\u03BC\u03BF\u03BD\u03AE\u03C2 (\u20AC)", "\u03A3\u03C5\u03BD. \u03A7\u03C1\u03AD\u03C9\u03C3\u03B7 (\u20AC)"
 			}
-		) {
-			@Override
-		    public boolean isCellEditable(int row, int column) {
-		       return false;
-		    }
-			
-			Class[] columnTypes = new Class[] {
-				Integer.class, String.class, String.class, Integer.class, Double.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		});
+		));
 		reservationsTable.getColumnModel().getColumn(0).setResizable(false);
 		reservationsTable.getColumnModel().getColumn(0).setPreferredWidth(53);
 		reservationsTable.getColumnModel().getColumn(1).setResizable(false);
-		reservationsTable.getColumnModel().getColumn(1).setPreferredWidth(246);
+		reservationsTable.getColumnModel().getColumn(1).setPreferredWidth(222);
 		reservationsTable.getColumnModel().getColumn(2).setResizable(false);
 		reservationsTable.getColumnModel().getColumn(2).setPreferredWidth(89);
 		reservationsTable.getColumnModel().getColumn(3).setResizable(false);
-		reservationsTable.getColumnModel().getColumn(3).setPreferredWidth(109);
+		reservationsTable.getColumnModel().getColumn(3).setPreferredWidth(130);
 		reservationsTable.getColumnModel().getColumn(4).setResizable(false);
-		reservationsTable.getColumnModel().getColumn(4).setPreferredWidth(91);
+		reservationsTable.getColumnModel().getColumn(4).setPreferredWidth(104);
 		scrollPane.setViewportView(reservationsTable);
 		
 		JLabel nameLabel = new JLabel("\u039F\u03BD\u03BF\u03BC\u03B1\u03C4\u03B5\u03C0\u03CE\u03BD\u03C5\u03BC\u03BF");
 		nameLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		nameLabel.setBounds(20, 65, 95, 14);
+		nameLabel.setBounds(20, 69, 95, 14);
 		panel.add(nameLabel);
 		
 		JRadioButton oneBed = new JRadioButton("\u039C\u03BF\u03BD\u03CC\u03BA\u03BB\u03B9\u03BD\u03BF (35\u20AC/\u03B2\u03C1\u03AC\u03B4\u03C5)");
+		oneBed.setFont(new Font("SansSerif", Font.BOLD, 12));
 		oneBed.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
 			}
 		});
 	
 		oneBed.setActionCommand("\u039C\u03BF\u03BD\u03CC\u03BA\u03BB\u03B9\u03BD\u03BF (35\u20AC/\u039D\u03CD\u03C7\u03C4\u03B1)");
-		oneBed.setBounds(125, 117, 154, 23);
+		oneBed.setBounds(125, 117, 180, 23);
 		panel.add(oneBed);
 		
 		JRadioButton twoBeds = new JRadioButton("\u0394\u03AF\u03BA\u03BB\u03B9\u03BD\u03BF(70\u20AC/\u03B2\u03C1\u03AC\u03B4\u03C5)");
+		twoBeds.setFont(new Font("SansSerif", Font.BOLD, 12));
 		twoBeds.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
 			}
 		});
-		twoBeds.setBounds(125, 143, 154, 23);
+		twoBeds.setBounds(125, 143, 180, 23);
 		panel.add(twoBeds);
 		
 		JRadioButton threeBeds = new JRadioButton("\u03A4\u03C1\u03AF\u03BA\u03BB\u03B9\u03BD\u03BF (100\u20AC/\u039D\u03CD\u03C7\u03C4\u03B1)");
+		threeBeds.setFont(new Font("SansSerif", Font.BOLD, 12));
 		threeBeds.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
 			}
 		});
-		threeBeds.setBounds(125, 169, 154, 23);
+		threeBeds.setBounds(125, 169, 180, 23);
 		panel.add(threeBeds);
 		
 		JRadioButton fourBeds = new JRadioButton("\u03A4\u03B5\u03C4\u03C1\u03AC\u03BA\u03BB\u03B9\u03BD\u03BF (120\u20AC/\u039D\u03CD\u03C7\u03C4\u03B1)");
-		fourBeds.setBounds(125, 195, 154, 23);
+		fourBeds.setFont(new Font("SansSerif", Font.BOLD, 12));
+		fourBeds.setBounds(125, 195, 180, 23);
 		panel.add(fourBeds);
 		
 		JLabel roomTypeLabel = new JLabel("\u03A4\u03CD\u03C0\u03BF\u03C2 \u0394\u03C9\u03BC\u03B1\u03C4\u03AF\u03BF\u03C5");
 		roomTypeLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		roomTypeLabel.setBounds(20, 117, 95, 14);
+		roomTypeLabel.setBounds(20, 121, 95, 14);
 		panel.add(roomTypeLabel);
 		
 		ButtonGroup radioButtonGroup = new ButtonGroup();
@@ -210,23 +187,23 @@ public class ReservationsScreen {
 		radioButtonGroup.add(fourBeds);
 		
 		JLabel label_1 = new JLabel("\u0394\u03B9\u03B1\u03BC\u03BF\u03BD\u03AE (\u03B2\u03C1\u03AC\u03B4\u03B9\u03B1):");
-		label_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		label_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		label_1.setBounds(83, 299, 114, 14);
 		panel.add(label_1);
 		
 		JLabel label_2 = new JLabel("\u0391\u03C0\u03CC:");
 		label_2.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		label_2.setBounds(76, 237, 46, 14);
+		label_2.setBounds(76, 240, 46, 14);
 		panel.add(label_2);
 		
 		JLabel lblNewLabel = new JLabel("\u039C\u03AD\u03C7\u03C1\u03B9:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblNewLabel.setBounds(76, 268, 46, 14);
+		lblNewLabel.setBounds(76, 270, 46, 14);
 		panel.add(lblNewLabel);
 		
 		JLabel staysLabel = new JLabel("--");
 		staysLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
-		staysLabel.setBounds(195, 299, 46, 14);
+		staysLabel.setBounds(206, 299, 46, 14);
 		panel.add(staysLabel);
 		
 		JLabel label = new JLabel("\u0394\u03B9\u03B1\u03C7\u03B5\u03AF\u03C1\u03B9\u03C3\u03B7 \u039A\u03C1\u03B1\u03C4\u03AE\u03C3\u03B5\u03C9\u03BD");
@@ -236,7 +213,7 @@ public class ReservationsScreen {
 		
 		JButton DeleteClient = new JButton("\u03A4\u03AD\u03BB\u03BF\u03C2 \u039A\u03C1\u03AC\u03C4\u03B7\u03C3\u03B7\u03C2");
 		DeleteClient.setForeground(new Color(128, 0, 0));
-		DeleteClient.setBounds(679, 419, 281, 37);
+		DeleteClient.setBounds(679, 424, 296, 30);
 		panel.add(DeleteClient);
 		
 		JLabel lblNewLabel_1 = new JLabel("\u03A3\u03C5\u03BD\u03BF\u03BB\u03B9\u03BA\u03CC \u03BA\u03CC\u03C3\u03C4\u03BF\u03C2 \u03B4\u03B9\u03B1\u03BC\u03BF\u03BD\u03AE\u03C2 (\u20AC):");
@@ -274,7 +251,7 @@ public class ReservationsScreen {
 				}
 			}
 		});
-		roomNumberField.setBounds(335, 424, 334, 23);
+		roomNumberField.setBounds(335, 424, 334, 32);
 		panel.add(roomNumberField);
 		roomNumberField.setColumns(10);
 
@@ -351,7 +328,7 @@ public class ReservationsScreen {
 			}
 		});
 		
-		fromDate.setBounds(132, 237, 105, 20);
+		fromDate.setBounds(120, 237, 146, 25);
 		panel.add(fromDate);
 		
 		toDate.addPropertyChangeListener(new PropertyChangeListener() {
@@ -386,7 +363,7 @@ public class ReservationsScreen {
 				}
 			}
 		});
-		toDate.setBounds(132, 268, 105, 20);
+		toDate.setBounds(120, 265, 146, 25);
 		panel.add(toDate);
 		
 		DeleteClient.addActionListener(new ActionListener(){

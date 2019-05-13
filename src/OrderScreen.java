@@ -17,6 +17,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JComboBox;
@@ -44,26 +45,22 @@ public class OrderScreen extends JFrame
 	private ArrayList<Product> salads = new ArrayList<>();
 	private ArrayList<Product> mainCourse = new ArrayList<>();
 	private JTextField textField;
-	
-	public static void main(String[] args) {
-		try {
-			UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-		} catch (Throwable e) {
-			e.printStackTrace();
-		}
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					OrderScreen frame = new OrderScreen();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	public OrderScreen() {
+		try { 
+	        UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel"); 
+	        SwingUtilities.updateComponentTreeUI(this);
+	    } catch(Exception ignored){}
+		initialize();
+	}
+	
+	private void initialize() {
+		
+		try { 
+	        UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel"); 
+	        SwingUtilities.updateComponentTreeUI(this);
+	    } catch(Exception ignored){}
+		
 		setResizable(false);
 		setTitle("Order Screen");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -120,7 +117,7 @@ public class OrderScreen extends JFrame
 		TotalPrice.setFont(new Font("Tahoma", Font.BOLD, 16));
 		TotalPrice.setEditable(false);
 		TotalPrice.setText("" + TotalP);
-		TotalPrice.setBounds(710, 326, 67, 22);
+		TotalPrice.setBounds(710, 326, 67, 25);
 		panel.add(TotalPrice);
 		TotalPrice.setColumns(10);
 		
