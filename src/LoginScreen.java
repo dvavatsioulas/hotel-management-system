@@ -118,7 +118,7 @@ public class LoginScreen extends JFrame {
 				}
 				else if(tempUsername.equals(USERNAME3) && tempPassword.equals(PASSWORD3)) {
 					JOptionPane.showMessageDialog(null,"Σύνδεση επιτυχής.");
-					//ACTIVITIES SCREEN
+					ActivitiesScreen AS = new ActivitiesScreen();
 					Main.HS.setVisible(false);
 					setVisible(false);
 				}
