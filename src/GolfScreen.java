@@ -53,7 +53,7 @@ public class GolfScreen extends JFrame {
 				roomNo = textRoomNo.getText();
 			}
 		});
-		textRoomNo.setBounds(264, 65, 160, 25);
+		textRoomNo.setBounds(264, 65, 160, 30);
 		textRoomNo.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		textRoomNo.setColumns(10);
 		contentPane.add(textRoomNo);
@@ -69,7 +69,7 @@ public class GolfScreen extends JFrame {
 				hours = Integer.parseInt(textHours.getText());
 			}
 		});
-		textHours.setBounds(264, 100, 160, 25);
+		textHours.setBounds(264, 100, 160, 30);
 		textHours.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		textHours.setColumns(10);
 		contentPane.add(textHours);
@@ -85,7 +85,7 @@ public class GolfScreen extends JFrame {
 				extraBastounia = Integer.parseInt(textExtraBastounia.getText());
 			}
 		});
-		textExtraBastounia.setBounds(264, 135, 160, 25);
+		textExtraBastounia.setBounds(264, 135, 160, 30);
 		textExtraBastounia.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		textExtraBastounia.setColumns(10);
 		contentPane.add(textExtraBastounia);
@@ -104,7 +104,7 @@ public class GolfScreen extends JFrame {
 					dispose();
 				}
 				catch(NumberFormatException ex) {
-					JOptionPane.showMessageDialog(null,"Εισάγετε ώρες χρήσης.");
+					JOptionPane.showMessageDialog(null,"Συμπληρώστε όλα τα πεδία.");
 				};
 			}
 		});

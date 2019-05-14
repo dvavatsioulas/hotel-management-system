@@ -49,7 +49,7 @@ public class SaunaScreen extends JFrame {
 				roomNo = textRoomNo.getText();
 			}
 		});
-		textRoomNo.setBounds(264, 65, 160, 25);
+		textRoomNo.setBounds(264, 65, 160, 30);
 		textRoomNo.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		textRoomNo.setColumns(10);
 		contentPane.add(textRoomNo);
@@ -65,7 +65,7 @@ public class SaunaScreen extends JFrame {
 				hours = Integer.parseInt(textHours.getText());
 			}
 		});
-		textHours.setBounds(264, 112, 160, 25);
+		textHours.setBounds(264, 112, 160, 30);
 		textHours.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		textHours.setColumns(10);
 		contentPane.add(textHours);
@@ -88,7 +88,7 @@ public class SaunaScreen extends JFrame {
 					dispose();
 				}
 				catch(NumberFormatException ex) {
-					JOptionPane.showMessageDialog(null,"Εισάγετε ώρες χρήσης.");
+					JOptionPane.showMessageDialog(null,"Συμπληρώστε όλα τα πεδία.");
 				};
 				
 			}
