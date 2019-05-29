@@ -25,12 +25,6 @@ public abstract class Registry {
 			rooms.add(new Room(i, random.nextInt(4)+1,true));
 	}
 
-	public static void viewRooms() {
-		for(Room r:rooms){
-			System.out.println("no:" + r.getRoomNumber() +" " + "type" + r.getRoomType() +" " + Boolean.toString(r.isFree()));
-		}
-	}
-
 	public static ArrayList<Reservation> getReservations(){
 		return reservations;
 	}
@@ -59,4 +53,4 @@ public abstract class Registry {
 		}
 		return false;
 	}
-}//END_OF_CLASS
+}

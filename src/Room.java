@@ -26,4 +26,4 @@ public class Room {
 	public void setFree(boolean isFree) {
 		this.isFree = isFree;
 	}
-}//END_OF_CLASS
+}

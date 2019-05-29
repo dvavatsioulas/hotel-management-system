@@ -2,11 +2,11 @@
 public class Order
 {
 	private int clientId;
-	private int totalPrice;
+	private int orderCharge;
 	
-	public Order(int clientId, int totalPrice)
+	public Order(int clientId, int orderCharge)
 	{
 		this.clientId = clientId;
-		this.totalPrice = totalPrice;
+		this.orderCharge = orderCharge;
 	}
 }

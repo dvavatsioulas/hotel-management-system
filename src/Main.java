@@ -10,7 +10,7 @@ public class Main {
 	public static void main(String[] args) {
 		Registry.createRooms(); //DIMIOURGIA DOMATION
 
-		HS = new HomeScreen();
+		HS=HomeScreen.getInstance();
 
 	}
 }

@@ -16,17 +16,20 @@ import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
-public class GymScreen extends JFrame {
+public final class GymScreen extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textRoomNo;
-	private JTextField textHours;
+	private JTextField roomNoField;
+	private JTextField hoursField;
 	private double hours;
 	private String roomNo;
 	private double charge;
 	private boolean personalTrainer;
-
-	public GymScreen() {
+	private static GymScreen INSTANCE = null;
+	
+	
+	private GymScreen() {
+		setResizable(false);
 		try { 
 	        UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel"); 
 	        SwingUtilities.updateComponentTreeUI(this);
@@ -38,50 +41,51 @@ public class GymScreen extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setLocationRelativeTo(null);
 		
 		JLabel roomlabel = new JLabel("\u0391\u03C1\u03B9\u03B8\u03BC\u03CC\u03C2 \u03B4\u03C9\u03BC\u03B1\u03C4\u03AF\u03BF\u03C5:");
 		roomlabel.setBounds(10, 65, 150, 35);
 		roomlabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		contentPane.add(roomlabel);
 		
-		textRoomNo = new JTextField();
-		textRoomNo.addActionListener(new ActionListener() {
+		roomNoField = new JTextField();
+		roomNoField.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String roomNo = textRoomNo.getText();
+				String roomNo = roomNoField.getText();
 			}
 		});
-		textRoomNo.setBounds(264, 65, 120, 30);
-		textRoomNo.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		textRoomNo.setColumns(10);
-		contentPane.add(textRoomNo);
+		roomNoField.setBounds(264, 65, 120, 30);
+		roomNoField.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		roomNoField.setColumns(10);
+		contentPane.add(roomNoField);
 		
 		JLabel hourslabel = new JLabel("\u038F\u03C1\u03B5\u03C2 \u03C7\u03C1\u03AE\u03C3\u03B7\u03C2:");
 		hourslabel.setBounds(10, 100, 150, 35);
 		hourslabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		contentPane.add(hourslabel);
 		
-		textHours = new JTextField();
-		textHours.addActionListener(new ActionListener() {
+		hoursField = new JTextField();
+		hoursField.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int hours = Integer.parseInt(textHours.getText());
+				int hours = Integer.parseInt(hoursField.getText());
 			}
 		});
-		textHours.setBounds(264, 100, 120, 30);
-		textHours.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		textHours.setColumns(10);
-		contentPane.add(textHours);
+		hoursField.setBounds(264, 100, 120, 30);
+		hoursField.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		hoursField.setColumns(10);
+		contentPane.add(hoursField);
 		
 		JButton okbutton = new JButton("OK");
 		okbutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					if (personalTrainer)
-						charge = Integer.parseInt(textHours.getText()) *15;
+						charge = Integer.parseInt(hoursField.getText()) *15;
 					else
-						charge=Integer.parseInt(textHours.getText())*10;
+						charge=Integer.parseInt(hoursField.getText())*10;
 					
 				
-					if(Registry.addChargeToReservation(Integer.parseInt(textRoomNo.getText()), charge)==true) {
+					if(Registry.addChargeToReservation(Integer.parseInt(roomNoField.getText()), charge)==true) {
 						JOptionPane.showMessageDialog(null,"Η χρέωση για τη δραστηριότητα έχει καταχωρηθεί επιτυχώς.");
 					}
 					else {
@@ -115,4 +119,11 @@ public class GymScreen extends JFrame {
 		contentPane.add(lblNewLabel);
 	}
 
+	public static GymScreen getInstance() {
+		if(INSTANCE==null) {
+			INSTANCE = new GymScreen();
+		}
+		return INSTANCE;
+	}
+	
 }

@@ -28,8 +28,9 @@ import javax.swing.JSpinner;
 import java.awt.Color;
 import java.awt.Component;
 import javax.swing.UIManager;
+import javax.swing.SpinnerNumberModel;
 
-public class BarScreen extends JFrame
+public final class BarScreen extends JFrame
 {	
 	private JPanel contentPane;
 	private JList list;
@@ -37,11 +38,11 @@ public class BarScreen extends JFrame
 	private JList list_1;
 	private JTable table;
 	private JTextField orderChargeField;
-	private JLabel lblNewLabel;
-	private Double TotalP = 0.0;
+	private JLabel chargeLabel;
+	private Double barCharge = 0.0;
 	private JButton deleteButton;
 	private JScrollPane scrollPane_1;
-
+	private static BarScreen INSTANCE= null;
 	
 	private ArrayList<Product> deserts = new ArrayList<>();
 	private ArrayList<Product> drinks = new ArrayList<>();
@@ -49,7 +50,7 @@ public class BarScreen extends JFrame
 	private ArrayList<Product> mainCourse = new ArrayList<>();
 	private JTextField roomNoField;
 
-	public BarScreen() {
+	private BarScreen() {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
@@ -106,25 +107,29 @@ public class BarScreen extends JFrame
 		panel.setLayout(null);
 		
 		JSpinner spinner_deserts = new JSpinner();
+		spinner_deserts.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 		spinner_deserts.setBounds(124, 324, 45, 22);
 		panel.add(spinner_deserts);
 		
 		JSpinner spinner_drinks = new JSpinner();
+		spinner_drinks.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 		spinner_drinks.setBounds(124, 245, 45, 22);
 		panel.add(spinner_drinks);
 		
 		JSpinner spinner_salads = new JSpinner();
+		spinner_salads.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 		spinner_salads.setBounds(124, 81, 45, 22);
 		panel.add(spinner_salads);
 		
 		JSpinner spinner_mainCourse = new JSpinner();
+		spinner_mainCourse.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 		spinner_mainCourse.setBounds(124, 167, 45, 22);
 		panel.add(spinner_mainCourse);
 		
 		orderChargeField = new JTextField();
 		orderChargeField.setFont(new Font("Tahoma", Font.BOLD, 16));
 		orderChargeField.setEditable(false);
-		orderChargeField.setText("" + TotalP);
+		orderChargeField.setText("" + barCharge);
 		orderChargeField.setBounds(710, 326, 67, 25);
 		panel.add(orderChargeField);
 		orderChargeField.setColumns(10);
@@ -153,27 +158,25 @@ public class BarScreen extends JFrame
 		table.getColumnModel().getColumn(1).setPreferredWidth(146);
 		table.getColumnModel().getColumn(2).setPreferredWidth(132);
 		
-		lblNewLabel = new JLabel("\u03A3\u03CD\u03BD\u03BF\u03BB\u03BF (\u20AC):");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel.setBounds(608, 325, 99, 26);
-		panel.add(lblNewLabel);
+		chargeLabel = new JLabel("\u03A3\u03CD\u03BD\u03BF\u03BB\u03BF (\u20AC):");
+		chargeLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
+		chargeLabel.setBounds(608, 325, 99, 26);
+		panel.add(chargeLabel);
 		
 		deleteButton = new JButton("\u0394\u03B9\u03B1\u03B3\u03C1\u03B1\u03C6\u03AE \u0395\u03C0\u03B9\u03BB\u03B5\u03B3\u03BC\u03AD\u03BD\u03BF\u03C5");
 		deleteButton.setForeground(new Color(204, 0, 51));
 		deleteButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				
 				try {
 
 					Object temp= (((DefaultTableModel)table.getModel()).getValueAt(table.getSelectedRow(),2));
 					String tempstring=(String)temp;
 					double tempPartialCost= Double.parseDouble(tempstring);
 					
-					TotalP=TotalP-tempPartialCost;
+					barCharge=barCharge-tempPartialCost;
 					
 					((DefaultTableModel)table.getModel()).removeRow(table.getSelectedRow());
-					orderChargeField.setText(TotalP+"");
+					orderChargeField.setText(barCharge+"");
 				} catch (ArrayIndexOutOfBoundsException e) {
 					JOptionPane.showMessageDialog(null,"Δεν υπάρχει κάποιο προϊόν για να διαγραφεί.");
 				}
@@ -213,9 +216,8 @@ public class BarScreen extends JFrame
 					{
 						((DefaultTableModel)table.getModel()).addRow(new Object[] {tempstring,spinner_drinks.getValue(),(p.getPrice()*((Integer)spinner_drinks.getValue()))+""});
 						
-						TotalP += p.getPrice()*(Integer)spinner_drinks.getValue();
-						System.out.println(TotalP);
-						orderChargeField.setText("" + TotalP);					
+						barCharge += p.getPrice()*(Integer)spinner_drinks.getValue();
+						orderChargeField.setText("" + barCharge);					
 					}
 				}
 			}
@@ -233,9 +235,8 @@ public class BarScreen extends JFrame
 						
 					((DefaultTableModel)table.getModel()).addRow(new Object[] {tempstring,spinner_deserts.getValue(),(p.getPrice()*((Integer)spinner_deserts.getValue()))+""});
 						
-					TotalP += p.getPrice()*(Integer)spinner_deserts.getValue();
-					System.out.println(TotalP);
-					orderChargeField.setText("" + TotalP);		
+					barCharge += p.getPrice()*(Integer)spinner_deserts.getValue();
+					orderChargeField.setText("" + barCharge);		
 					}
 				}
 			}
@@ -253,9 +254,8 @@ public class BarScreen extends JFrame
 						
 					((DefaultTableModel)table.getModel()).addRow(new Object[] {tempstring,spinner_salads.getValue(),(p.getPrice()*((Integer)spinner_salads.getValue()))+""});
 						
-					TotalP += p.getPrice()*(Integer)spinner_salads.getValue();
-					System.out.println(TotalP);
-					orderChargeField.setText("" + TotalP);
+					barCharge += p.getPrice()*(Integer)spinner_salads.getValue();
+					orderChargeField.setText("" + barCharge);
 					}
 				}
 			}
@@ -273,9 +273,8 @@ public class BarScreen extends JFrame
 						
 					((DefaultTableModel)table.getModel()).addRow(new Object[] {tempstring,spinner_mainCourse.getValue(),(p.getPrice()*((Integer)spinner_mainCourse.getValue()))+""});
 						
-					TotalP += p.getPrice()*(Integer)spinner_mainCourse.getValue();
-					System.out.println(TotalP);
-					orderChargeField.setText("" + TotalP);
+					barCharge += p.getPrice()*(Integer)spinner_mainCourse.getValue();
+					orderChargeField.setText("" + barCharge);
 					}
 				}				
 			}
@@ -283,64 +282,78 @@ public class BarScreen extends JFrame
 		mainCourseButton.setBounds(179, 166, 40, 25);
 		panel.add(mainCourseButton);
 		
-		JLabel label = new JLabel("\u039D\u03AD\u03B1 \u03A0\u03B1\u03C1\u03B1\u03B3\u03B3\u03B5\u03BB\u03AF\u03B1");
-		label.setFont(new Font("Tahoma", Font.BOLD, 18));
-		label.setBounds(10, 10, 166, 25);
-		panel.add(label);
+		JLabel newOrderLabel = new JLabel("\u039D\u03AD\u03B1 \u03A0\u03B1\u03C1\u03B1\u03B3\u03B3\u03B5\u03BB\u03AF\u03B1");
+		newOrderLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
+		newOrderLabel.setBounds(10, 10, 166, 25);
+		panel.add(newOrderLabel);
 		
-		JLabel label_1 = new JLabel("\u03A3\u03B1\u03BB\u03AC\u03C4\u03B5\u03C2 - \u039F\u03C1\u03B5\u03BA\u03C4\u03B9\u03BA\u03AC");
-		label_1.setHorizontalAlignment(SwingConstants.CENTER);
-		label_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		label_1.setBounds(31, 47, 198, 22);
-		panel.add(label_1);
+		JLabel saladsLabel = new JLabel("\u03A3\u03B1\u03BB\u03AC\u03C4\u03B5\u03C2 - \u039F\u03C1\u03B5\u03BA\u03C4\u03B9\u03BA\u03AC");
+		saladsLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		saladsLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		saladsLabel.setBounds(31, 47, 198, 22);
+		panel.add(saladsLabel);
 		
-		JLabel label_2 = new JLabel("\u039A\u03C5\u03C1\u03AF\u03C9\u03C2 \u03A0\u03B9\u03AC\u03C4\u03BF");
-		label_2.setHorizontalAlignment(SwingConstants.CENTER);
-		label_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-		label_2.setBounds(31, 134, 198, 22);
-		panel.add(label_2);
+		JLabel mainCourseLabel = new JLabel("\u039A\u03C5\u03C1\u03AF\u03C9\u03C2 \u03A0\u03B9\u03AC\u03C4\u03BF");
+		mainCourseLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		mainCourseLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		mainCourseLabel.setBounds(31, 134, 198, 22);
+		panel.add(mainCourseLabel);
 		
-		JLabel label_4 = new JLabel("\u03A0\u03BF\u03C4\u03AC - \u0391\u03C8\u03B5\u03C8\u03AE\u03BC\u03B1\u03C4\u03B1");
-		label_4.setHorizontalAlignment(SwingConstants.CENTER);
-		label_4.setFont(new Font("Tahoma", Font.BOLD, 14));
-		label_4.setBounds(31, 212, 198, 22);
-		panel.add(label_4);
+		JLabel drinksLabel = new JLabel("\u03A0\u03BF\u03C4\u03AC - \u0391\u03C6\u03B5\u03C8\u03AE\u03BC\u03B1\u03C4\u03B1");
+		drinksLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		drinksLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		drinksLabel.setBounds(31, 212, 198, 22);
+		panel.add(drinksLabel);
 		
-		JLabel label_5 = new JLabel("\u0395\u03C0\u03B9\u03B4\u03CC\u03C1\u03C0\u03B9\u03BF");
-		label_5.setHorizontalAlignment(SwingConstants.CENTER);
-		label_5.setFont(new Font("Tahoma", Font.BOLD, 14));
-		label_5.setBounds(31, 294, 198, 22);
-		panel.add(label_5);
+		JLabel desertsLabel = new JLabel("\u0395\u03C0\u03B9\u03B4\u03CC\u03C1\u03C0\u03B9\u03BF");
+		desertsLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		desertsLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		desertsLabel.setBounds(31, 294, 198, 22);
+		panel.add(desertsLabel);
 		
 		roomNoField = new JTextField();
 		roomNoField.setBounds(710, 358, 67, 22);
 		panel.add(roomNoField);
 		roomNoField.setColumns(10);
 		
-		JLabel label_3 = new JLabel("\u0391\u03C1.\u0394\u03C9\u03BC\u03B1\u03C4\u03AF\u03BF\u03C5:");
-		label_3.setFont(new Font("Tahoma", Font.BOLD, 13));
-		label_3.setBounds(608, 362, 95, 14);
-		panel.add(label_3);
+		JLabel roomNoLabel = new JLabel("\u0391\u03C1.\u0394\u03C9\u03BC\u03B1\u03C4\u03AF\u03BF\u03C5:");
+		roomNoLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
+		roomNoLabel.setBounds(608, 362, 95, 14);
+		panel.add(roomNoLabel);
 		
 		JButton sendOrderButton = new JButton("\u0391\u03C0\u03BF\u03C3\u03C4\u03BF\u03BB\u03AE \u03A0\u03B1\u03C1\u03B1\u03B3\u03B3\u03B5\u03BB\u03AF\u03B1\u03C2");
 		sendOrderButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(table.getModel().getRowCount()==0) {
-					JOptionPane.showMessageDialog(null, "Δεν έχει προστεθεί κάποιο προϊόν");
-				}
-				else {
-					if(Registry.addChargeToReservation(Integer.parseInt(roomNoField.getText())		, TotalP)==true) {
-						JOptionPane.showMessageDialog(null,"Η παραγγελία έχει καταχωρηθεί επιτυχώς.");
+	
+				try {
+					if(table.getModel().getRowCount()==0) {
+						JOptionPane.showMessageDialog(null, "Δεν έχει προστεθεί κάποιο προϊόν");
 					}
 					else {
-						JOptionPane.showMessageDialog(null,"Δεν είναι δυνατή η παραγγελία για αυτό το δωμάτιο. Πληκτρολογήστε έναν άλλον αριθμό δωματίου.");
+						if(Registry.addChargeToReservation(Integer.parseInt(roomNoField.getText())		, barCharge)==true) {
+							JOptionPane.showMessageDialog(null,"Η παραγγελία έχει καταχωρηθεί επιτυχώς.");
+						}
+						else {
+							JOptionPane.showMessageDialog(null,"Δεν είναι δυνατή η παραγγελία για αυτό το δωμάτιο. Πληκτρολογήστε έναν άλλον αριθμό δωματίου.");
+						}
 					}
-				}
-	
+					
+				} 
+				catch(NumberFormatException ex){
+					JOptionPane.showMessageDialog(null,"Συμπληρώστε έγκυρο αριθμό δωματίου.");
+				};
+
 			}
 		});
 		sendOrderButton.setForeground(new Color(0, 0, 204));
 		sendOrderButton.setBounds(421, 326, 175, 26);
 		panel.add(sendOrderButton);
 	}
+	
+	public static BarScreen getInstance() {
+		if(INSTANCE==null)
+			INSTANCE=new BarScreen();
+		return INSTANCE;
+	}
+	
 }

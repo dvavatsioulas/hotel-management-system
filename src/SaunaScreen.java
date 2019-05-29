@@ -15,7 +15,7 @@ import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
-public class SaunaScreen extends JFrame {
+public final class SaunaScreen extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textRoomNo;
@@ -24,8 +24,11 @@ public class SaunaScreen extends JFrame {
 	private String roomNo;
 	private double charge;
 	private JLabel label;
-
-	public SaunaScreen() {
+	private static SaunaScreen INSTANCE = null;
+	
+	
+	private SaunaScreen() {
+		setResizable(false);
 		try { 
 	        UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel"); 
 	        SwingUtilities.updateComponentTreeUI(this);
@@ -37,6 +40,7 @@ public class SaunaScreen extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setLocationRelativeTo(null);
 		
 		JLabel roomlabel = new JLabel("\u0391\u03C1\u03B9\u03B8\u03BC\u03CC\u03C2 \u03B4\u03C9\u03BC\u03B1\u03C4\u03AF\u03BF\u03C5:");
 		roomlabel.setBounds(10, 65, 150, 35);
@@ -104,4 +108,11 @@ public class SaunaScreen extends JFrame {
 		contentPane.add(label);
 	}
 
+	public static SaunaScreen getInstance() {
+		if(INSTANCE==null) {
+			INSTANCE = new SaunaScreen();
+		}
+		return INSTANCE;
+	}
+	
 }

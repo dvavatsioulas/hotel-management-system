@@ -29,7 +29,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
-public class LoginScreen extends JFrame {
+public final class LoginScreen extends JFrame {
 
 	private static final String USERNAME1="reception";
 	private static final String PASSWORD1="reception";
@@ -44,7 +44,9 @@ public class LoginScreen extends JFrame {
 	private JTextField usernameField;
 	private JPasswordField passwordField;
 
-	public LoginScreen() {
+	private static LoginScreen INSTANCE=null;
+	
+	private LoginScreen() {
 		try { 
 	        UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel"); 
 	        SwingUtilities.updateComponentTreeUI(this);
@@ -111,19 +113,22 @@ public class LoginScreen extends JFrame {
 				}
 				else if(tempUsername.equals(USERNAME2) && tempPassword.equals(PASSWORD2)) {
 					JOptionPane.showMessageDialog(null,"Σύνδεση επιτυχής.");
-					BarScreen BS = new BarScreen();						
+					BarScreen.getInstance();					
 					Main.HS.setVisible(false);
 					setVisible(false);
 
 				}
 				else if(tempUsername.equals(USERNAME3) && tempPassword.equals(PASSWORD3)) {
 					JOptionPane.showMessageDialog(null,"Σύνδεση επιτυχής.");
-					ActivitiesScreen AS = new ActivitiesScreen();
+					ActivitiesScreen.getInstance();
 					Main.HS.setVisible(false);
 					setVisible(false);
 				}
-				else
+				else {
 					JOptionPane.showMessageDialog(null,"Λάθος όνομα χρήστη ή κωδικός! Παρακαλώ ξαναπροσπαθήστε.");
+				}
+				usernameField.setText(null);
+				passwordField.setText(null);
 			}
 		});
 		loginButton.setForeground(Color.BLACK);
@@ -144,7 +149,13 @@ public class LoginScreen extends JFrame {
 		
 		helpButton.setFont(new Font("Tahoma", Font.BOLD, 15));
 		contentPane.add(helpButton);
-		
-		
 	}
+	
+	public static LoginScreen getInstance() {
+		if(INSTANCE==null) {
+			INSTANCE = new LoginScreen();
+		}
+		return INSTANCE;
+	}
+	
 }

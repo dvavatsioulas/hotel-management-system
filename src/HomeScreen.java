@@ -19,14 +19,16 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Color;
 
-public class HomeScreen extends JFrame {
+public final class HomeScreen extends JFrame {
 
 	
 	private JPanel contentPane;
 	private LoginScreen LS;
 	private BarScreen BS;
+	private static HomeScreen INSTANCE = null;
 	
-	public HomeScreen() {
+	
+	private HomeScreen() {
 		try { 
 	        UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel"); 
 	        SwingUtilities.updateComponentTreeUI(this);
@@ -56,7 +58,8 @@ public class HomeScreen extends JFrame {
 		JButton viewBarButton = new JButton("\u0395\u03C3\u03C4\u03B9\u03B1\u03C4\u03CC\u03C1\u03B9\u03BF-\u039C\u03C0\u03B1\u03C1");
 		viewBarButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				LS=new LoginScreen();
+				//LoginScreen.getInstance();
+				LoginScreen.getInstance().setVisible(true);
 			}
 		});
 		
@@ -64,7 +67,17 @@ public class HomeScreen extends JFrame {
 		viewReservationsButton.setFont(new Font("Tahoma", Font.BOLD, 14));
 		viewReservationsButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				LS=new LoginScreen();
+				//LoginScreen.getInstance();
+				LoginScreen.getInstance().setVisible(true);
+			}
+		});
+		
+		JButton viewActivitiesButton = new JButton("\u0394\u03C1\u03B1\u03C3\u03C4\u03B7\u03C1\u03B9\u03CC\u03C4\u03B7\u03C4\u03B5\u03C2");
+		viewActivitiesButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//LS=new LoginScreen();
+				//LoginScreen.getInstance();
+				LoginScreen.getInstance().setVisible(true);
 			}
 		});
 		
@@ -92,12 +105,7 @@ public class HomeScreen extends JFrame {
 		gbc_viewBarButton.gridy = 1;
 		contentPane.add(viewBarButton, gbc_viewBarButton);
 		
-		JButton viewActivitiesButton = new JButton("\u0394\u03C1\u03B1\u03C3\u03C4\u03B7\u03C1\u03B9\u03CC\u03C4\u03B7\u03C4\u03B5\u03C2");
-		viewActivitiesButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				LS=new LoginScreen();
-			}
-		});
+	
 		viewActivitiesButton.setFont(new Font("Tahoma", Font.BOLD, 14));
 		GridBagConstraints gbc_viewActivitiesButton = new GridBagConstraints();
 		gbc_viewActivitiesButton.fill = GridBagConstraints.BOTH;
@@ -105,4 +113,12 @@ public class HomeScreen extends JFrame {
 		gbc_viewActivitiesButton.gridy = 1;
 		contentPane.add(viewActivitiesButton, gbc_viewActivitiesButton);
 	}
+	
+	public static HomeScreen getInstance() {
+		if(INSTANCE==null) {
+			INSTANCE = new HomeScreen();
+		}
+		return INSTANCE;
+	}
+	
 }

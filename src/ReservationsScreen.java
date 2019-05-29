@@ -68,7 +68,7 @@ public class ReservationsScreen extends JFrame{
 	private JTextField nameField;
 	private Reservation reservation;
 	private static JTable reservationsTable;
-	private JTextField roomNumberField;
+	private JTextField roomNoField;
 	private int nightStays;
 	private int tempType=0;
 	private int tempCostForLabel=0;
@@ -245,32 +245,32 @@ public class ReservationsScreen extends JFrame{
 		costLabel.setBounds(76, 369, 203, 35);
 		panel.add(costLabel);
 		
-		roomNumberField = new JTextField();
+		roomNoField = new JTextField();
 		
-		roomNumberField.addMouseListener(new MouseAdapter() {
+		roomNoField.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
-				roomNumberField.setText(null);
+				roomNoField.setText(null);
 			}
 		});
-		roomNumberField.setText("\u0391\u03BD\u03B1\u03B6\u03AE\u03C4\u03B7\u03C3\u03B7 \u03C0\u03B5\u03BB\u03AC\u03C4\u03B7/\u03B1\u03C1.\u03B4\u03C9\u03BC\u03B1\u03C4\u03AF\u03BF\u03C5...");
+		roomNoField.setText("\u0391\u03BD\u03B1\u03B6\u03AE\u03C4\u03B7\u03C3\u03B7 \u03C0\u03B5\u03BB\u03AC\u03C4\u03B7/\u03B1\u03C1.\u03B4\u03C9\u03BC\u03B1\u03C4\u03AF\u03BF\u03C5...");
 		
-		roomNumberField.addKeyListener(new KeyAdapter() {
+		roomNoField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent arg0) {
-				if(roomNumberField.getText()!=null) {
+				if(roomNoField.getText()!=null) {
 					DefaultTableModel tableModel=(DefaultTableModel)reservationsTable.getModel();
 					TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(tableModel);
-					String search = roomNumberField.getText().toUpperCase(); 
+					String search = roomNoField.getText().toUpperCase(); 
 					
 					reservationsTable.setRowSorter(tr);
 					tr.setRowFilter(RowFilter.regexFilter("(?i)" + search   ));
 				}
 			}
 		});
-		roomNumberField.setBounds(335, 424, 334, 32);
-		panel.add(roomNumberField);
-		roomNumberField.setColumns(10);
+		roomNoField.setBounds(335, 424, 334, 32);
+		panel.add(roomNoField);
+		roomNoField.setColumns(10);
 
 		reservationsTable.getTableHeader().setReorderingAllowed(false);
 		
@@ -409,11 +409,11 @@ public class ReservationsScreen extends JFrame{
 					
 					JOptionPane.showMessageDialog(null,"Η κράτηση του δωματίου "+tempRoomNumber +" διαγράφηκε επιτυχώς.");
 					
-					roomNumberField.setText(" ");  // adeiazo to textfield, kai pleon den efarmozetai kanena filtro sto jtable 
+					roomNoField.setText(" ");  // adeiazo to textfield, kai pleon den efarmozetai kanena filtro sto jtable 
 					
 					   try
 					     {
-						   		 roomNumberField.requestFocus();
+						   		 roomNoField.requestFocus();
 					             Robot robot = new Robot();
 					             robot.keyPress(KeyEvent.VK_BACK_SPACE);
 					             robot.keyRelease(KeyEvent.VK_BACK_SPACE);
@@ -423,7 +423,6 @@ public class ReservationsScreen extends JFrame{
 					             exp.printStackTrace();
 					     }
 				}
-				Registry.viewRooms();
 			}
 		});
 
@@ -473,7 +472,6 @@ public class ReservationsScreen extends JFrame{
 					else
 						JOptionPane.showMessageDialog(null, "Δεν υπάρχει διαθέσιμο δωμάτιο του επιλεγμένου τύπου."); //an den iparxei domatio emfanise minima	
 				}
-				Registry.viewRooms();
 			}
 		});
 	}
@@ -485,13 +483,12 @@ public class ReservationsScreen extends JFrame{
 				tempCharge=r.getTotalCharge();
 		}
 		
-		for(int i = 0; i < reservationsTable.getRowCount(); i++){//For each row
+		for(int i = 0; i < reservationsTable.getRowCount(); i++){
 	        	if(reservationsTable.getModel().getValueAt(i, 0).equals(roomNo)) {
 	        		reservationsTable.getModel().setValueAt(tempCharge, i, 4);
 	        	}
 	    }
 		
-		
 		}
 	}
-}//END_OF_CLASS
+}
