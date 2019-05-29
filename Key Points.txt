@@ -1,0 +1,5 @@
+• Dynamic filtering/searching on JTable (notes: non case-sensitive, use of TableRowSorter) @ReservationsScreen, line 260
+• Use of JCalendar library for easy, modern and practical date choosing. Also use of library JodaTime for calculating days difference between 2 dates so the total night-stays can be calculated
+• Use of action listeners in order to dynamically change the charge label when room type or a date is changed
+• Singleton design pattern for GUIs
+• Exception catching for wrong (or null) data type input

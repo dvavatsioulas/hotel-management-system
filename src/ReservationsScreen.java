@@ -178,7 +178,7 @@ public class ReservationsScreen extends JFrame{
 		twoBeds.setBounds(125, 143, 180, 23);
 		panel.add(twoBeds);
 		
-		JRadioButton threeBeds = new JRadioButton("\u03A4\u03C1\u03AF\u03BA\u03BB\u03B9\u03BD\u03BF (100\u20AC/\u039D\u03CD\u03C7\u03C4\u03B1)");
+		JRadioButton threeBeds = new JRadioButton("\u03A4\u03C1\u03AF\u03BA\u03BB\u03B9\u03BD\u03BF (100\u20AC/\u03B2\u03C1\u03AC\u03B4\u03C5)");
 		threeBeds.setFont(new Font("SansSerif", Font.BOLD, 12));
 		threeBeds.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
@@ -187,7 +187,7 @@ public class ReservationsScreen extends JFrame{
 		threeBeds.setBounds(125, 169, 180, 23);
 		panel.add(threeBeds);
 		
-		JRadioButton fourBeds = new JRadioButton("\u03A4\u03B5\u03C4\u03C1\u03AC\u03BA\u03BB\u03B9\u03BD\u03BF (120\u20AC/\u039D\u03CD\u03C7\u03C4\u03B1)");
+		JRadioButton fourBeds = new JRadioButton("\u03A4\u03B5\u03C4\u03C1\u03AC\u03BA\u03BB\u03B9\u03BD\u03BF (120\u20AC/\u03B2\u03C1\u03AC\u03B4\u03C5)");
 		fourBeds.setFont(new Font("SansSerif", Font.BOLD, 12));
 		fourBeds.setBounds(125, 195, 180, 23);
 		panel.add(fourBeds);
@@ -205,7 +205,7 @@ public class ReservationsScreen extends JFrame{
 		
 		JLabel label_1 = new JLabel("\u0394\u03B9\u03B1\u03BC\u03BF\u03BD\u03AE (\u03B2\u03C1\u03AC\u03B4\u03B9\u03B1):");
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		label_1.setBounds(83, 299, 114, 14);
+		label_1.setBounds(83, 299, 114, 23);
 		panel.add(label_1);
 		
 		JLabel label_2 = new JLabel("\u0391\u03C0\u03CC:");
@@ -220,7 +220,7 @@ public class ReservationsScreen extends JFrame{
 		
 		JLabel staysLabel = new JLabel("--");
 		staysLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
-		staysLabel.setBounds(206, 299, 46, 14);
+		staysLabel.setBounds(207, 303, 46, 14);
 		panel.add(staysLabel);
 		
 		JLabel label = new JLabel("\u0394\u03B9\u03B1\u03C7\u03B5\u03AF\u03C1\u03B9\u03C3\u03B7 \u039A\u03C1\u03B1\u03C4\u03AE\u03C3\u03B5\u03C9\u03BD");

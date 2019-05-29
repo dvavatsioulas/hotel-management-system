@@ -97,7 +97,7 @@ public final class BarScreen extends JFrame
 		salads.add(new Product ("Πατατοσαλάτα", 4));
 		
 		mainCourse.add(new Product ("Μουσακάς", 7));
-		mainCourse.add(new Product ("Μακαρόνια με κυμά", 6));
+		mainCourse.add(new Product ("Μακαρόνια με κιμά", 6));
 		mainCourse.add(new Product ("Τσιπούρα", 8));
 		mainCourse.add(new Product ("Φακές", 7));
 		mainCourse.add(new Product ("Μπριζόλα με πατάτες", 9));		
@@ -108,22 +108,22 @@ public final class BarScreen extends JFrame
 		
 		JSpinner spinner_deserts = new JSpinner();
 		spinner_deserts.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
-		spinner_deserts.setBounds(124, 324, 45, 22);
+		spinner_deserts.setBounds(138, 324, 45, 22);
 		panel.add(spinner_deserts);
 		
 		JSpinner spinner_drinks = new JSpinner();
 		spinner_drinks.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
-		spinner_drinks.setBounds(124, 245, 45, 22);
+		spinner_drinks.setBounds(138, 245, 45, 22);
 		panel.add(spinner_drinks);
 		
 		JSpinner spinner_salads = new JSpinner();
 		spinner_salads.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
-		spinner_salads.setBounds(124, 81, 45, 22);
+		spinner_salads.setBounds(138, 81, 45, 22);
 		panel.add(spinner_salads);
 		
 		JSpinner spinner_mainCourse = new JSpinner();
 		spinner_mainCourse.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
-		spinner_mainCourse.setBounds(124, 167, 45, 22);
+		spinner_mainCourse.setBounds(138, 167, 45, 22);
 		panel.add(spinner_mainCourse);
 		
 		orderChargeField = new JTextField();
@@ -188,22 +188,22 @@ public final class BarScreen extends JFrame
 		
 		JComboBox desertsComboBox = new JComboBox();
 		desertsComboBox.setModel(new DefaultComboBoxModel(new String[] {"\u0395\u03C0\u03B9\u03BB\u03AD\u03BE\u03C4\u03B5", "\u03A0\u03B1\u03BD\u03B1\u03BA\u03CC\u03C4\u03B1", "\u03A0\u03B1\u03B3\u03C9\u03C4\u03CC (1 \u03BC\u03C0\u03AC\u03BB\u03B1)", "\u03A4\u03AC\u03C1\u03C4\u03B1 \u03A6\u03C1\u03BF\u03CD\u03C4\u03C9\u03BD", "\u03A4\u03C1\u03AF\u03B3\u03C9\u03BD\u03BF \u03A0\u03B1\u03BD\u03BF\u03C1\u03AC\u03BC\u03B1\u03C4\u03BF\u03C2", "\u039A\u03B1\u03C1\u03B9\u03CC\u03BA\u03B1"}));
-		desertsComboBox.setBounds(10, 324, 111, 22);
+		desertsComboBox.setBounds(10, 324, 124, 22);
 		panel.add(desertsComboBox);
 		
 		JComboBox drinksComboBox = new JComboBox();
 		drinksComboBox.setModel(new DefaultComboBoxModel(new String[] {"\u0395\u03C0\u03B9\u03BB\u03AD\u03BE\u03C4\u03B5", "Coca-Cola", "Fanta", "Sprite", "\u03A7\u03C5\u03BC\u03CC\u03C2 \u03A0\u03BF\u03C1\u03C4\u03BF\u03BA\u03AC\u03BB\u03B9", "\u03A3\u03CC\u03B4\u03B1"}));
-		drinksComboBox.setBounds(10, 245, 111, 22);
+		drinksComboBox.setBounds(10, 245, 124, 22);
 		panel.add(drinksComboBox);
 		
 		JComboBox saladsComboBox = new JComboBox();
 		saladsComboBox.setModel(new DefaultComboBoxModel(new String[] {"\u0395\u03C0\u03B9\u03BB\u03AD\u03BE\u03C4\u03B5", "Ceasar's", "\u03A7\u03C9\u03C1\u03B9\u03AC\u03C4\u03B9\u03BA\u03B7", "\u03A1\u03CC\u03BA\u03B1", "\u03A0\u03B1\u03C4\u03B1\u03C4\u03BF\u03C3\u03B1\u03BB\u03AC\u03C4\u03B1"}));
-		saladsComboBox.setBounds(10, 81, 111, 22);
+		saladsComboBox.setBounds(10, 81, 124, 22);
 		panel.add(saladsComboBox);
 		
 		JComboBox mainCourseComboBox = new JComboBox();
 		mainCourseComboBox.setModel(new DefaultComboBoxModel(new String[] {"\u0395\u03C0\u03B9\u03BB\u03AD\u03BE\u03C4\u03B5", "\u039C\u03BF\u03C5\u03C3\u03B1\u03BA\u03AC\u03C2", "\u039C\u03B1\u03BA\u03B1\u03C1\u03CC\u03BD\u03B9\u03B1 \u03BC\u03B5 \u03BA\u03C5\u03BC\u03AC", "\u03A4\u03C3\u03B9\u03C0\u03BF\u03CD\u03C1\u03B1", "\u03A6\u03B1\u03BA\u03AD\u03C2", "\u039C\u03C0\u03C1\u03B9\u03B6\u03CC\u03BB\u03B1 \u03BC\u03B5 \u03C0\u03B1\u03C4\u03AC\u03C4\u03B5\u03C2"}));
-		mainCourseComboBox.setBounds(10, 166, 111, 22);
+		mainCourseComboBox.setBounds(10, 166, 124, 22);
 		panel.add(mainCourseComboBox);
 		
 		JButton drinksButton = new JButton("+");
@@ -222,7 +222,7 @@ public final class BarScreen extends JFrame
 				}
 			}
 		});
-		drinksButton.setBounds(179, 244, 40, 25);
+		drinksButton.setBounds(189, 245, 40, 25);
 		panel.add(drinksButton);
 		
 		JButton desertsButton = new JButton("+");
@@ -241,7 +241,7 @@ public final class BarScreen extends JFrame
 				}
 			}
 		});
-		desertsButton.setBounds(179, 323, 40, 25);
+		desertsButton.setBounds(189, 324, 40, 25);
 		panel.add(desertsButton);		
 
 		JButton saladsButton = new JButton("+");
@@ -260,7 +260,7 @@ public final class BarScreen extends JFrame
 				}
 			}
 		});
-		saladsButton.setBounds(179, 80, 40, 25);
+		saladsButton.setBounds(189, 81, 40, 25);
 		panel.add(saladsButton);
 		
 		JButton mainCourseButton = new JButton("+");
@@ -279,7 +279,7 @@ public final class BarScreen extends JFrame
 				}				
 			}
 		});
-		mainCourseButton.setBounds(179, 166, 40, 25);
+		mainCourseButton.setBounds(189, 167, 40, 25);
 		panel.add(mainCourseButton);
 		
 		JLabel newOrderLabel = new JLabel("\u039D\u03AD\u03B1 \u03A0\u03B1\u03C1\u03B1\u03B3\u03B3\u03B5\u03BB\u03AF\u03B1");
