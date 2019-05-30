@@ -24,58 +24,22 @@ import javax.swing.border.EmptyBorder;
 
 public final class HomeScreen extends JFrame {
 
-	
 	private JPanel contentPane;
 	private LoginScreen LS;
 	private BarScreen BS;
 	private static HomeScreen INSTANCE = null;
-	
 	
 	private HomeScreen() {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				
-				try
-				{
-				/*F
-					PrintWriter writer = new PrintWriter(file);
-					writer.print("");
-					writer.close();*/
-					
-					File rsv = new File("ReservationsData.db");
-					rsv.delete();
-					
-		            FileOutputStream fos = new FileOutputStream("ReservationsData.db");
-		            ObjectOutputStream oos = new ObjectOutputStream(fos);
-		            oos.writeObject(Registry.reservations);
-		            oos.close();
-		            fos.close();
-		        }
-		        catch (IOException ioe)
-		        {
-		            ioe.printStackTrace();
-		        }
-				
-				try
-				{
-
-					File rooms = new File("RoomsData.db");
-					rooms.delete();
-					
-		            FileOutputStream fos = new FileOutputStream("RoomsData.db");
-		            ObjectOutputStream oos = new ObjectOutputStream(fos);
-		            oos.writeObject(Registry.rooms);
-		            oos.close();
-		            fos.close();
-		        }
-		        catch (IOException ioe)
-		        {
-		            ioe.printStackTrace();
-		        }
+				FileHandling.saveReservationsToFile();
+				FileHandling.saveRoomsToFile();
 				
 			}
 		});
+		
 		try { 
 	        UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel"); 
 	        SwingUtilities.updateComponentTreeUI(this);
@@ -105,7 +69,6 @@ public final class HomeScreen extends JFrame {
 		JButton viewBarButton = new JButton("\u0395\u03C3\u03C4\u03B9\u03B1\u03C4\u03CC\u03C1\u03B9\u03BF-\u039C\u03C0\u03B1\u03C1");
 		viewBarButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//LoginScreen.getInstance();
 				LoginScreen.getInstance().setVisible(true);
 			}
 		});
@@ -114,7 +77,6 @@ public final class HomeScreen extends JFrame {
 		viewReservationsButton.setFont(new Font("Tahoma", Font.BOLD, 14));
 		viewReservationsButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//LoginScreen.getInstance();
 				LoginScreen.getInstance().setVisible(true);
 			}
 		});
@@ -122,8 +84,6 @@ public final class HomeScreen extends JFrame {
 		JButton viewActivitiesButton = new JButton("\u0394\u03C1\u03B1\u03C3\u03C4\u03B7\u03C1\u03B9\u03CC\u03C4\u03B7\u03C4\u03B5\u03C2");
 		viewActivitiesButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//LS=new LoginScreen();
-				//LoginScreen.getInstance();
 				LoginScreen.getInstance().setVisible(true);
 			}
 		});

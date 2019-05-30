@@ -337,7 +337,6 @@ public final class BarScreen extends JFrame
 							JOptionPane.showMessageDialog(null,"Δεν είναι δυνατή η παραγγελία για αυτό το δωμάτιο. Πληκτρολογήστε έναν άλλον αριθμό δωματίου.");
 						}
 					}
-					
 				} 
 				catch(NumberFormatException ex){
 					JOptionPane.showMessageDialog(null,"Συμπληρώστε έγκυρο αριθμό δωματίου.");

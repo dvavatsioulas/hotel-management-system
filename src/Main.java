@@ -8,18 +8,12 @@ public class Main {
 	public static HomeScreen HS;
 	
 	public static void main(String[] args) {
-		//Registry.createRooms(); //DIMIOURGIA DOMATION
-		/*for(Reservation rsv: Registry.reservations) {
-			System.out.println(rsv.getClientName());
-		}
 		
-		//System.out.println("asdasd");*/
+		FileHandling.readReservationsFromFile(); //diavasma twn kratisewn apo to arxeio
+		FileHandling.readRoomsFromFile();		 //diavasma twn dwmatiwn apo to arxeio
 		
-		new FileHandling();
-		Registry.RS.addReservationsToTable();
+		Registry.RS.addReservationsToTable();    //prosthiki twn kratisewn sto JTable
+		
 		HS=HomeScreen.getInstance();
-
-		
-		
 	}
 }

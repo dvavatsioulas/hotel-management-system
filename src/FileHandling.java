@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -8,34 +9,10 @@ import java.util.ArrayList;
 public class FileHandling {
 
 	public FileHandling() {
+	}
 	
-		ArrayList<Reservation> rsv = new ArrayList<>(); 
-		rsv.clear();
-		
-		try
-	    {
-	        FileInputStream fis = new FileInputStream("RoomsData.db");
-	        ObjectInputStream ois = new ObjectInputStream(fis);
 	
-	        Registry.rooms = (ArrayList) ois.readObject();
-	
-	        ois.close();
-	        fis.close();
-	    }
-	    catch (IOException ioe)
-	    {
-	        ioe.printStackTrace();
-	        return;
-	    }
-	    catch (ClassNotFoundException c)
-	    {
-	        System.out.println("Class not found");
-	        c.printStackTrace();
-	        return;
-	    }
-		
-		//************************************************
-		
+	public static void readReservationsFromFile() {
 		try
 	    {
 	        FileInputStream fis = new FileInputStream("ReservationsData.db");
@@ -57,57 +34,41 @@ public class FileHandling {
 	        c.printStackTrace();
 	        return;
 	    }
-		
-		
-		
-		
-		
-		/*try
-        {
-            FileOutputStream fos = new FileOutputStream("ReservationsData.db");
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(rsv);
-            oos.close();
-            fos.close();
-        }
-        catch (IOException ioe)
-        {
-            ioe.printStackTrace();
-        }*/
-		
-		
-		
-		
-		
-		
 	}
 	
-}
-	/*private ArrayList<Room> r = new ArrayList<>();
-	
-	public FileHandling() {
-		
-		r.add(new Room(101,1,true));
-		r.add(new Room(102,2,true));
-		r.add(new Room(103,1,true));
-		r.add(new Room(104,3,true));
-		r.add(new Room(105,2,true));
-		r.add(new Room(106,4,true));
-		
-		r.add(new Room(201,3,true));
-		r.add(new Room(202,1,true));
-		r.add(new Room(203,1,true));
-		r.add(new Room(204,3,true));
-		r.add(new Room(205,2,true));
-		r.add(new Room(206,2,true));
-		r.add(new Room(207,4,true));
-		r.add(new Room(208,3,true));
-		
+	public static void readRoomsFromFile() {
 		try
-        {
-            FileOutputStream fos = new FileOutputStream("RoomData.db");
+	    {
+	        FileInputStream fis = new FileInputStream("RoomsData.db");
+	        ObjectInputStream ois = new ObjectInputStream(fis);
+	
+	        Registry.rooms = (ArrayList) ois.readObject();
+	
+	        ois.close();
+	        fis.close();
+	    }
+	    catch (IOException ioe)
+	    {
+	        ioe.printStackTrace();
+	        return;
+	    }
+	    catch (ClassNotFoundException c)
+	    {
+	        System.out.println("Class not found");
+	        c.printStackTrace();
+	        return;
+	    }
+	}
+	
+	public static void saveReservationsToFile() {
+		try
+		{
+			File rsv = new File("ReservationsData.db");
+			rsv.delete();
+			
+            FileOutputStream fos = new FileOutputStream("ReservationsData.db");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(r);
+            oos.writeObject(Registry.reservations);
             oos.close();
             fos.close();
         }
@@ -115,11 +76,25 @@ public class FileHandling {
         {
             ioe.printStackTrace();
         }
-		
-	}*/
+	}
 	
+	public static void saveRoomsToFile() {
+		try
+		{
 
-	
-	
-	
+			File rooms = new File("RoomsData.db");
+			rooms.delete();
+			
+            FileOutputStream fos = new FileOutputStream("RoomsData.db");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(Registry.rooms);
+            oos.close();
+            fos.close();
+        }
+        catch (IOException ioe)
+        {
+            ioe.printStackTrace();
+        }
+	}
 
+}	

@@ -391,7 +391,6 @@ public class ReservationsScreen extends JFrame{
 		
 		DeleteClient.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				//int tempRoomNumber;
 				if(reservationsTable.getSelectionModel().isSelectionEmpty()) {
 					JOptionPane.showMessageDialog(null,"Δεν έχει επιλεχθεί κράτηση.");
 				}
@@ -486,8 +485,6 @@ public class ReservationsScreen extends JFrame{
 				for(Reservation r: Registry.reservations) {
 					System.out.println(r.getClientName())	;
 				}
-						
-				
 			}
 		});
 	}
@@ -497,25 +494,19 @@ public class ReservationsScreen extends JFrame{
 		for(Reservation r:Registry.reservations) {
 			if(roomNo==r.getRoom().getRoomNumber()) {
 				tempCharge=r.getTotalCharge();
-		}
+			}
 		
-		for(int i = 0; i < reservationsTable.getRowCount(); i++){
-	        	if(reservationsTable.getModel().getValueAt(i, 0).equals(roomNo)) {
-	        		reservationsTable.getModel().setValueAt(tempCharge, i, 4);
-	        	}
-	    }
-		
+			for(int i = 0; i < reservationsTable.getRowCount(); i++){
+		        	if(reservationsTable.getModel().getValueAt(i, 0).equals(roomNo)) {
+		        		reservationsTable.getModel().setValueAt(tempCharge, i, 4);
+		        	}
+			}
 		}
 	}
 	
 	public void addReservationsToTable() {
-		
-		
 		for(Reservation rsv: Registry.reservations) {
 			((DefaultTableModel) reservationsTable.getModel()).addRow(new Object[] {rsv.getRoom().getRoomNumber(), rsv.getClientName(), rsv.getRoom().getRoomType()+"κλινο",rsv.getStayCharge(),rsv.getTotalCharge()});
 		}
-		
-		
 	}
-	
 }
