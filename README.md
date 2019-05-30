@@ -30,5 +30,5 @@ Analysts
 *  Kevrekidis Ilias
 *  Koniakis Giorgos
 *  Koutsogiannis Christos
-*  Anna Manto
+*  Manto Anna
 *  Papagiannis Zisis
