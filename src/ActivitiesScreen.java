@@ -90,6 +90,7 @@ public final class ActivitiesScreen extends JFrame {
 		if(INSTANCE==null) {
 			INSTANCE = new ActivitiesScreen();
 		}
+		else INSTANCE.setVisible(true);
 		return INSTANCE;
 	}
 	

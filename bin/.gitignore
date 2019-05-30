@@ -4,12 +4,12 @@
 /ActivitiesScreen$4.class
 /ActivitiesScreen$5.class
 /ActivitiesScreen.class
+/BarScreen$6.class
 /BarScreen$1.class
 /BarScreen$2.class
 /BarScreen$3.class
 /BarScreen$4.class
 /BarScreen$5.class
-/BarScreen$6.class
 /BarScreen$7.class
 /BarScreen$8.class
 /BarScreen.class
@@ -62,3 +62,6 @@
 /SaunaScreen$2.class
 /SaunaScreen$3.class
 /SaunaScreen.class
+/FileHandling.class
+/HomeScreen$4.class
+/ReservationsScreen$17.class

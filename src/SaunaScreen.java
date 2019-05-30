@@ -112,6 +112,7 @@ public final class SaunaScreen extends JFrame {
 		if(INSTANCE==null) {
 			INSTANCE = new SaunaScreen();
 		}
+		else INSTANCE.setVisible(true);
 		return INSTANCE;
 	}
 	

@@ -108,6 +108,7 @@ public final class MasazScreen extends JFrame {
 		if(INSTANCE==null) {
 			INSTANCE = new MasazScreen();
 		}
+		else INSTANCE.setVisible(true);
 		return INSTANCE;
 	}
 	

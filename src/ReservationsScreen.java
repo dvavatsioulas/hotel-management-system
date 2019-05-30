@@ -132,15 +132,14 @@ public class ReservationsScreen extends JFrame{
 			new String[] {
 				"\u0391\u03C1.\u0394\u03C9\u03BC.", "\u039F\u03BD\u03BF\u03BC\u03B1\u03C4\u03B5\u03C0\u03CE\u03BD\u03C5\u03BC\u03BF", "\u03A4\u03CD\u03C0\u03BF\u03C2 \u0394\u03C9\u03BC.", "\u039A\u03CC\u03C3\u03C4\u03BF\u03C2 \u0394\u03B9\u03B1\u03BC\u03BF\u03BD\u03AE\u03C2 (\u20AC)", "\u03A3\u03C5\u03BD. \u03A7\u03C1\u03AD\u03C9\u03C3\u03B7 (\u20AC)"
 			}
-		));
-		
-		addComponentListener(new ComponentAdapter() {
-			@Override
-			public void componentShown(ComponentEvent e) {
-				((DefaultTableModel)reservationsTable.getModel()).fireTableDataChanged();
+		) {
+			Class[] columnTypes = new Class[] {
+				Integer.class, Object.class, Object.class, Object.class, Object.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
 			}
 		});
-		
 		reservationsTable.getColumnModel().getColumn(0).setResizable(false);
 		reservationsTable.getColumnModel().getColumn(0).setPreferredWidth(53);
 		reservationsTable.getColumnModel().getColumn(1).setResizable(false);
@@ -151,6 +150,13 @@ public class ReservationsScreen extends JFrame{
 		reservationsTable.getColumnModel().getColumn(3).setPreferredWidth(130);
 		reservationsTable.getColumnModel().getColumn(4).setResizable(false);
 		reservationsTable.getColumnModel().getColumn(4).setPreferredWidth(104);
+		
+		addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentShown(ComponentEvent e) {
+				((DefaultTableModel)reservationsTable.getModel()).fireTableDataChanged();
+			}
+		});
 		scrollPane.setViewportView(reservationsTable);
 		
 		JLabel nameLabel = new JLabel("\u039F\u03BD\u03BF\u03BC\u03B1\u03C4\u03B5\u03C0\u03CE\u03BD\u03C5\u03BC\u03BF");
@@ -385,29 +391,33 @@ public class ReservationsScreen extends JFrame{
 		
 		DeleteClient.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				int tempRoomNumber;
+				//int tempRoomNumber;
 				if(reservationsTable.getSelectionModel().isSelectionEmpty()) {
 					JOptionPane.showMessageDialog(null,"Δεν έχει επιλεχθεί κράτηση.");
 				}
 				else {	
-					Object selectedRoomNumber = reservationsTable.getModel().getValueAt(reservationsTable.convertRowIndexToModel(reservationsTable.getSelectedRow())         , 0)         ;
-					tempRoomNumber = (Integer) selectedRoomNumber;
+					Integer selectedRoomNumber = (Integer) reservationsTable.getModel().getValueAt( reservationsTable.getSelectedRow() , 0)         ;
 					
 					for(Reservation rsv:Registry.reservations) {
-						if(rsv.getRoom().getRoomNumber()==tempRoomNumber) Registry.reservations.remove(rsv);
-						break;
+						
+						if(rsv.getRoom().getRoomNumber()==selectedRoomNumber) {
+							
+							Registry.reservations.remove(rsv);
+							((DefaultTableModel) reservationsTable.getModel()).removeRow(reservationsTable.getSelectedRow());  
+							JOptionPane.showMessageDialog(null,"Η κράτηση του δωματίου "+selectedRoomNumber +" διαγράφηκε επιτυχώς.");
+							break;
+						}
+						
 					}
 					
 					for(Room room:Registry.rooms) {
-						if(room.getRoomNumber() == tempRoomNumber) {
+						if(room.getRoomNumber() == selectedRoomNumber) {
 							room.setFree(true);
 							break;
 						}
 					}
 					
-					((DefaultTableModel)reservationsTable.getModel()).removeRow(reservationsTable.convertRowIndexToModel(reservationsTable.getSelectedRow()));
 					
-					JOptionPane.showMessageDialog(null,"Η κράτηση του δωματίου "+tempRoomNumber +" διαγράφηκε επιτυχώς.");
 					
 					roomNoField.setText(" ");  // adeiazo to textfield, kai pleon den efarmozetai kanena filtro sto jtable 
 					
@@ -472,6 +482,12 @@ public class ReservationsScreen extends JFrame{
 					else
 						JOptionPane.showMessageDialog(null, "Δεν υπάρχει διαθέσιμο δωμάτιο του επιλεγμένου τύπου."); //an den iparxei domatio emfanise minima	
 				}
+				
+				for(Reservation r: Registry.reservations) {
+					System.out.println(r.getClientName())	;
+				}
+						
+				
 			}
 		});
 	}
@@ -491,4 +507,15 @@ public class ReservationsScreen extends JFrame{
 		
 		}
 	}
+	
+	public void addReservationsToTable() {
+		
+		
+		for(Reservation rsv: Registry.reservations) {
+			((DefaultTableModel) reservationsTable.getModel()).addRow(new Object[] {rsv.getRoom().getRoomNumber(), rsv.getClientName(), rsv.getRoom().getRoomType()+"κλινο",rsv.getStayCharge(),rsv.getTotalCharge()});
+		}
+		
+		
+	}
+	
 }

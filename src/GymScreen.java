@@ -123,6 +123,7 @@ public final class GymScreen extends JFrame {
 		if(INSTANCE==null) {
 			INSTANCE = new GymScreen();
 		}
+		else INSTANCE.setVisible(true);
 		return INSTANCE;
 	}
 	

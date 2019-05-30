@@ -353,6 +353,7 @@ public final class BarScreen extends JFrame
 	public static BarScreen getInstance() {
 		if(INSTANCE==null)
 			INSTANCE=new BarScreen();
+		else INSTANCE.setVisible(true);
 		return INSTANCE;
 	}
 	

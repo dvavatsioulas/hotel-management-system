@@ -1,23 +1,26 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JToolBar;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import java.awt.Color;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.awt.Color;
+import javax.swing.border.EmptyBorder;
 
 public final class HomeScreen extends JFrame {
 
@@ -29,6 +32,50 @@ public final class HomeScreen extends JFrame {
 	
 	
 	private HomeScreen() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				
+				try
+				{
+				/*F
+					PrintWriter writer = new PrintWriter(file);
+					writer.print("");
+					writer.close();*/
+					
+					File rsv = new File("ReservationsData.db");
+					rsv.delete();
+					
+		            FileOutputStream fos = new FileOutputStream("ReservationsData.db");
+		            ObjectOutputStream oos = new ObjectOutputStream(fos);
+		            oos.writeObject(Registry.reservations);
+		            oos.close();
+		            fos.close();
+		        }
+		        catch (IOException ioe)
+		        {
+		            ioe.printStackTrace();
+		        }
+				
+				try
+				{
+
+					File rooms = new File("RoomsData.db");
+					rooms.delete();
+					
+		            FileOutputStream fos = new FileOutputStream("RoomsData.db");
+		            ObjectOutputStream oos = new ObjectOutputStream(fos);
+		            oos.writeObject(Registry.rooms);
+		            oos.close();
+		            fos.close();
+		        }
+		        catch (IOException ioe)
+		        {
+		            ioe.printStackTrace();
+		        }
+				
+			}
+		});
 		try { 
 	        UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel"); 
 	        SwingUtilities.updateComponentTreeUI(this);
@@ -118,6 +165,7 @@ public final class HomeScreen extends JFrame {
 		if(INSTANCE==null) {
 			INSTANCE = new HomeScreen();
 		}
+		else INSTANCE.setVisible(true);
 		return INSTANCE;
 	}
 	

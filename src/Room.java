@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Room {
+public class Room implements Serializable{
 		
 	private int roomNumber;
 	private int roomType;

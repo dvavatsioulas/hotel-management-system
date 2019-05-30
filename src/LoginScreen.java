@@ -129,6 +129,7 @@ public final class LoginScreen extends JFrame {
 				}
 				usernameField.setText(null);
 				passwordField.setText(null);
+				usernameField.requestFocus();
 			}
 		});
 		loginButton.setForeground(Color.BLACK);
@@ -155,6 +156,7 @@ public final class LoginScreen extends JFrame {
 		if(INSTANCE==null) {
 			INSTANCE = new LoginScreen();
 		}
+		else INSTANCE.setVisible(true);
 		return INSTANCE;
 	}
 	

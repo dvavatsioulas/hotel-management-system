@@ -1,4 +1,6 @@
-public class Reservation {
+import java.io.Serializable;
+
+public class Reservation implements Serializable{
 		private String clientName;
 		private Room room;
 		private int stayCharge;
@@ -30,4 +32,10 @@ public class Reservation {
 		public double getTotalCharge() {
 			return totalCharge;
 		}
+
+		public int getStayCharge() {
+			return stayCharge;
+		}
+		
+		
 }

@@ -128,6 +128,7 @@ public final class GolfScreen extends JFrame {
 		if(INSTANCE==null) {
 			INSTANCE = new GolfScreen();
 		}
+		else INSTANCE.setVisible(true);
 		return INSTANCE;
 	}
 }
