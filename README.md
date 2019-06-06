@@ -3,6 +3,7 @@ A simple Hotel Management System, which handles Reservations, Bar Orders and Ext
 This project has been made for training and academic purposes, and specifically made  to comply with the Assignment Requirements of the "Software Technology" course.  
 
 -- NOTE --  
+Make sure ReservationsData.db and RoomsData.db are in the same directory with the executable .jar file.  
 Usernames and passwords for login are (username:password):  
 *  reception:reception  
 *  bar:bar  
