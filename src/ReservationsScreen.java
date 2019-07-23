@@ -342,8 +342,8 @@ public class ReservationsScreen extends JFrame{
 					}
 					else{
 						staysLabel.setText("--");
-						costLabel.setText("-- €");
-						JOptionPane.showMessageDialog(null,"Επιλέξτε ημερομηνία check-out μεταγενέστερη της ημερομηνίας check-in.");
+						costLabel.setText("-- Β€");
+						JOptionPane.showMessageDialog(null,"Ξ•Ο€ΞΉΞ»Ξ­ΞΎΟ„Ξµ Ξ·ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―Ξ± check-out ΞΌΞµΟ„Ξ±Ξ³ΞµΞ½Ξ­ΟƒΟ„ΞµΟΞ· Ο„Ξ·Ο‚ Ξ·ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―Ξ±Ο‚ check-in.");
 					}
 				}
 				catch(IllegalArgumentException e) {
@@ -378,8 +378,8 @@ public class ReservationsScreen extends JFrame{
 					}
 					else{
 						staysLabel.setText("--");
-						costLabel.setText("-- €");
-						JOptionPane.showMessageDialog(null,"Επιλέξτε ημερομηνία check-out μεταγενέστερη της ημερομηνίας check-in.");
+						costLabel.setText("-- Β€");
+						JOptionPane.showMessageDialog(null,"Ξ•Ο€ΞΉΞ»Ξ­ΞΎΟ„Ξµ Ξ·ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―Ξ± check-out ΞΌΞµΟ„Ξ±Ξ³ΞµΞ½Ξ­ΟƒΟ„ΞµΟΞ· Ο„Ξ·Ο‚ Ξ·ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―Ξ±Ο‚ check-in.");
 					}
 				}
 				catch(IllegalArgumentException e) {
@@ -392,7 +392,7 @@ public class ReservationsScreen extends JFrame{
 		DeleteClient.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				if(reservationsTable.getSelectionModel().isSelectionEmpty()) {
-					JOptionPane.showMessageDialog(null,"Δεν έχει επιλεχθεί κράτηση.");
+					JOptionPane.showMessageDialog(null,"Ξ”ΞµΞ½ Ξ­Ο‡ΞµΞΉ ΞµΟ€ΞΉΞ»ΞµΟ‡ΞΈΞµΞ― ΞΊΟΞ¬Ο„Ξ·ΟƒΞ·.");
 				}
 				else {	
 					Integer selectedRoomNumber = (Integer) reservationsTable.getModel().getValueAt( reservationsTable.getSelectedRow() , 0)         ;
@@ -403,7 +403,7 @@ public class ReservationsScreen extends JFrame{
 							
 							Registry.reservations.remove(rsv);
 							((DefaultTableModel) reservationsTable.getModel()).removeRow(reservationsTable.getSelectedRow());  
-							JOptionPane.showMessageDialog(null,"Η κράτηση του δωματίου "+selectedRoomNumber +" διαγράφηκε επιτυχώς.");
+							JOptionPane.showMessageDialog(null,"Ξ— ΞΊΟΞ¬Ο„Ξ·ΟƒΞ· Ο„ΞΏΟ… Ξ΄Ο‰ΞΌΞ±Ο„Ξ―ΞΏΟ… "+selectedRoomNumber +" Ξ΄ΞΉΞ±Ξ³ΟΞ¬Ο†Ξ·ΞΊΞµ ΞµΟ€ΞΉΟ„Ο…Ο‡ΟΟ‚.");
 							break;
 						}
 						
@@ -441,12 +441,12 @@ public class ReservationsScreen extends JFrame{
 				boolean isEverythingFilled=true;
 				
 				if(tempName.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Παρακαλώ εισάγετε ονοματεπώνυμο");
+					JOptionPane.showMessageDialog(null, "Ξ Ξ±ΟΞ±ΞΊΞ±Ξ»Ο ΞµΞΉΟƒΞ¬Ξ³ΞµΟ„Ξµ ΞΏΞ½ΞΏΞΌΞ±Ο„ΞµΟ€ΟΞ½Ο…ΞΌΞΏ");
 					isEverythingFilled=false;
 				};
 				
 				if(radioButtonGroup.getSelection()==null) {
-						JOptionPane.showMessageDialog(panel, "Παρακαλώ επιλέξτε τύπο δωματίου!");
+						JOptionPane.showMessageDialog(panel, "Ξ Ξ±ΟΞ±ΞΊΞ±Ξ»Ο ΞµΟ€ΞΉΞ»Ξ­ΞΎΟ„Ξµ Ο„ΟΟ€ΞΏ Ξ΄Ο‰ΞΌΞ±Ο„Ξ―ΞΏΟ…!");
 						isEverythingFilled=false;
 				}
 				
@@ -463,23 +463,23 @@ public class ReservationsScreen extends JFrame{
 						reservation=new Reservation(tempName,availableRoom,Integer.parseInt(costLabel.getText()),Double.parseDouble(costLabel.getText()));
 						Registry.reservations.add(reservation);
 						
-						JOptionPane.showMessageDialog(null, "Η κράτηση έγινε επιτυχώς!"+"\n"+ "Στοιχεία: "+ "\n" + "Αριθμός δωματίου:"+ tempRoomNumber + 
-														"\n"+"Όνοματεπώνυμο: "+tempName +"\n"+"Τύπος δωματίου: "+tempType+"κλινο\n");
+						JOptionPane.showMessageDialog(null, "Ξ— ΞΊΟΞ¬Ο„Ξ·ΟƒΞ· Ξ­Ξ³ΞΉΞ½Ξµ ΞµΟ€ΞΉΟ„Ο…Ο‡ΟΟ‚!"+"\n"+ "Ξ£Ο„ΞΏΞΉΟ‡ΞµΞ―Ξ±: "+ "\n" + "Ξ‘ΟΞΉΞΈΞΌΟΟ‚ Ξ΄Ο‰ΞΌΞ±Ο„Ξ―ΞΏΟ…:"+ tempRoomNumber + 
+														"\n"+"ΞΞ½ΞΏΞΌΞ±Ο„ΞµΟ€ΟΞ½Ο…ΞΌΞΏ: "+tempName +"\n"+"Ξ¤ΟΟ€ΞΏΟ‚ Ξ΄Ο‰ΞΌΞ±Ο„Ξ―ΞΏΟ…: "+tempType+"ΞΊΞ»ΞΉΞ½ΞΏ\n");
 						
-						((DefaultTableModel) reservationsTable.getModel()).addRow(new Object[] {tempRoomNumber, tempName, tempType+"κλινο",Integer.parseInt(costLabel.getText()),Double.parseDouble(costLabel.getText())});
+						((DefaultTableModel) reservationsTable.getModel()).addRow(new Object[] {tempRoomNumber, tempName, tempType+"ΞΊΞ»ΞΉΞ½ΞΏ",Integer.parseInt(costLabel.getText()),Double.parseDouble(costLabel.getText())});
 						staysLabel.setText("--");
-						costLabel.setText("-- €");
+						costLabel.setText("-- Β€");
 						fromDate.setCalendar(null);
 						toDate.setCalendar(null);
 						nameField.setText(null);
 						radioButtonGroup.clearSelection();
 						}
 						catch(NumberFormatException e) {
-							JOptionPane.showMessageDialog(null,"Παρακαλώ επιλέξτε ημερομηνίες check-in και check-out.");
+							JOptionPane.showMessageDialog(null,"Ξ Ξ±ΟΞ±ΞΊΞ±Ξ»Ο ΞµΟ€ΞΉΞ»Ξ­ΞΎΟ„Ξµ Ξ·ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―ΞµΟ‚ check-in ΞΊΞ±ΞΉ check-out.");
 						}
 					}
 					else
-						JOptionPane.showMessageDialog(null, "Δεν υπάρχει διαθέσιμο δωμάτιο του επιλεγμένου τύπου."); //an den iparxei domatio emfanise minima	
+						JOptionPane.showMessageDialog(null, "Ξ”ΞµΞ½ Ο…Ο€Ξ¬ΟΟ‡ΞµΞΉ Ξ΄ΞΉΞ±ΞΈΞ­ΟƒΞΉΞΌΞΏ Ξ΄Ο‰ΞΌΞ¬Ο„ΞΉΞΏ Ο„ΞΏΟ… ΞµΟ€ΞΉΞ»ΞµΞ³ΞΌΞ­Ξ½ΞΏΟ… Ο„ΟΟ€ΞΏΟ…."); //an den iparxei domatio emfanise minima	
 				}
 				
 				for(Reservation r: Registry.reservations) {
@@ -506,7 +506,7 @@ public class ReservationsScreen extends JFrame{
 	
 	public void addReservationsToTable() {
 		for(Reservation rsv: Registry.reservations) {
-			((DefaultTableModel) reservationsTable.getModel()).addRow(new Object[] {rsv.getRoom().getRoomNumber(), rsv.getClientName(), rsv.getRoom().getRoomType()+"κλινο",rsv.getStayCharge(),rsv.getTotalCharge()});
+			((DefaultTableModel) reservationsTable.getModel()).addRow(new Object[] {rsv.getRoom().getRoomNumber(), rsv.getClientName(), rsv.getRoom().getRoomType()+"ΞΊΞ»ΞΉΞ½ΞΏ",rsv.getStayCharge(),rsv.getTotalCharge()});
 		}
 	}
 }

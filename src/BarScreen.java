@@ -79,28 +79,28 @@ public final class BarScreen extends JFrame
 				
 		setLocationRelativeTo(null);
 		
-		deserts.add(new Product("Πανακότα",3));
-		deserts.add(new Product("Παγωτό (1 μπάλα)",2));
-		deserts.add(new Product("Τάρτα Φρούτων",2.5));
-		deserts.add(new Product("Τρίγωνο Πανοράματος",1.5));
-		deserts.add(new Product("Καριόκα",1));
+		deserts.add(new Product("Ξ Ξ±Ξ½Ξ±ΞΊΟΟ„Ξ±",3));
+		deserts.add(new Product("Ξ Ξ±Ξ³Ο‰Ο„Ο (1 ΞΌΟ€Ξ¬Ξ»Ξ±)",2));
+		deserts.add(new Product("Ξ¤Ξ¬ΟΟ„Ξ± Ξ¦ΟΞΏΟΟ„Ο‰Ξ½",2.5));
+		deserts.add(new Product("Ξ¤ΟΞ―Ξ³Ο‰Ξ½ΞΏ Ξ Ξ±Ξ½ΞΏΟΞ¬ΞΌΞ±Ο„ΞΏΟ‚",1.5));
+		deserts.add(new Product("ΞΞ±ΟΞΉΟΞΊΞ±",1));
 		
 		drinks.add(new Product ("Coca-Cola", 1.5));
 		drinks.add(new Product ("Fanta", 1.5));
 		drinks.add(new Product ("Sprite", 1.5));
-		drinks.add(new Product ("Χυμός Πορτοκάλι", 2));
-		drinks.add(new Product ("Σόδα", 1));
+		drinks.add(new Product ("Ξ§Ο…ΞΌΟΟ‚ Ξ ΞΏΟΟ„ΞΏΞΊΞ¬Ξ»ΞΉ", 2));
+		drinks.add(new Product ("Ξ£ΟΞ΄Ξ±", 1));
 		
 		salads.add(new Product ("Ceasar's", 5));
-		salads.add(new Product ("Χωριάτικη", 3.5));
-		salads.add(new Product ("Ρόκα", 3));
-		salads.add(new Product ("Πατατοσαλάτα", 4));
+		salads.add(new Product ("Ξ§Ο‰ΟΞΉΞ¬Ο„ΞΉΞΊΞ·", 3.5));
+		salads.add(new Product ("Ξ΅ΟΞΊΞ±", 3));
+		salads.add(new Product ("Ξ Ξ±Ο„Ξ±Ο„ΞΏΟƒΞ±Ξ»Ξ¬Ο„Ξ±", 4));
 		
-		mainCourse.add(new Product ("Μουσακάς", 7));
-		mainCourse.add(new Product ("Μακαρόνια με κιμά", 6));
-		mainCourse.add(new Product ("Τσιπούρα", 8));
-		mainCourse.add(new Product ("Φακές", 7));
-		mainCourse.add(new Product ("Μπριζόλα με πατάτες", 9));		
+		mainCourse.add(new Product ("ΞΞΏΟ…ΟƒΞ±ΞΊΞ¬Ο‚", 7));
+		mainCourse.add(new Product ("ΞΞ±ΞΊΞ±ΟΟΞ½ΞΉΞ± ΞΌΞµ ΞΊΞΉΞΌΞ¬", 6));
+		mainCourse.add(new Product ("Ξ¤ΟƒΞΉΟ€ΞΏΟΟΞ±", 8));
+		mainCourse.add(new Product ("Ξ¦Ξ±ΞΊΞ­Ο‚", 7));
+		mainCourse.add(new Product ("ΞΟ€ΟΞΉΞ¶ΟΞ»Ξ± ΞΌΞµ Ο€Ξ±Ο„Ξ¬Ο„ΞµΟ‚", 9));		
 		
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.CENTER);
@@ -178,7 +178,7 @@ public final class BarScreen extends JFrame
 					((DefaultTableModel)table.getModel()).removeRow(table.getSelectedRow());
 					orderChargeField.setText(barCharge+"");
 				} catch (ArrayIndexOutOfBoundsException e) {
-					JOptionPane.showMessageDialog(null,"Δεν υπάρχει κάποιο προϊόν για να διαγραφεί.");
+					JOptionPane.showMessageDialog(null,"Ξ”ΞµΞ½ Ο…Ο€Ξ¬ΟΟ‡ΞµΞΉ ΞΊΞ¬Ο€ΞΏΞΉΞΏ Ο€ΟΞΏΟΟΞ½ Ξ³ΞΉΞ± Ξ½Ξ± Ξ΄ΞΉΞ±Ξ³ΟΞ±Ο†ΞµΞ―.");
 				}
 			}
 		});
@@ -327,19 +327,19 @@ public final class BarScreen extends JFrame
 	
 				try {
 					if(table.getModel().getRowCount()==0) {
-						JOptionPane.showMessageDialog(null, "Δεν έχει προστεθεί κάποιο προϊόν");
+						JOptionPane.showMessageDialog(null, "Ξ”ΞµΞ½ Ξ­Ο‡ΞµΞΉ Ο€ΟΞΏΟƒΟ„ΞµΞΈΞµΞ― ΞΊΞ¬Ο€ΞΏΞΉΞΏ Ο€ΟΞΏΟΟΞ½");
 					}
 					else {
 						if(Registry.addChargeToReservation(Integer.parseInt(roomNoField.getText())		, barCharge)==true) {
-							JOptionPane.showMessageDialog(null,"Η παραγγελία έχει καταχωρηθεί επιτυχώς.");
+							JOptionPane.showMessageDialog(null,"Ξ— Ο€Ξ±ΟΞ±Ξ³Ξ³ΞµΞ»Ξ―Ξ± Ξ­Ο‡ΞµΞΉ ΞΊΞ±Ο„Ξ±Ο‡Ο‰ΟΞ·ΞΈΞµΞ― ΞµΟ€ΞΉΟ„Ο…Ο‡ΟΟ‚.");
 						}
 						else {
-							JOptionPane.showMessageDialog(null,"Δεν είναι δυνατή η παραγγελία για αυτό το δωμάτιο. Πληκτρολογήστε έναν άλλον αριθμό δωματίου.");
+							JOptionPane.showMessageDialog(null,"Ξ”ΞµΞ½ ΞµΞ―Ξ½Ξ±ΞΉ Ξ΄Ο…Ξ½Ξ±Ο„Ξ® Ξ· Ο€Ξ±ΟΞ±Ξ³Ξ³ΞµΞ»Ξ―Ξ± Ξ³ΞΉΞ± Ξ±Ο…Ο„Ο Ο„ΞΏ Ξ΄Ο‰ΞΌΞ¬Ο„ΞΉΞΏ. Ξ Ξ»Ξ·ΞΊΟ„ΟΞΏΞ»ΞΏΞ³Ξ®ΟƒΟ„Ξµ Ξ­Ξ½Ξ±Ξ½ Ξ¬Ξ»Ξ»ΞΏΞ½ Ξ±ΟΞΉΞΈΞΌΟ Ξ΄Ο‰ΞΌΞ±Ο„Ξ―ΞΏΟ….");
 						}
 					}
 				} 
 				catch(NumberFormatException ex){
-					JOptionPane.showMessageDialog(null,"Συμπληρώστε έγκυρο αριθμό δωματίου.");
+					JOptionPane.showMessageDialog(null,"Ξ£Ο…ΞΌΟ€Ξ»Ξ·ΟΟΟƒΟ„Ξµ Ξ­Ξ³ΞΊΟ…ΟΞΏ Ξ±ΟΞΉΞΈΞΌΟ Ξ΄Ο‰ΞΌΞ±Ο„Ξ―ΞΏΟ….");
 				};
 
 			}

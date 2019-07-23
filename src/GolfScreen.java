@@ -100,15 +100,15 @@ public final class GolfScreen extends JFrame {
 				try {
 					charge = Integer.parseInt(hoursField.getText())*10 + Integer.parseInt(extraBastouniaField.getText())*5;
 					if(Registry.addChargeToReservation(Integer.parseInt(roomNoField.getText()), charge)==true) {
-						JOptionPane.showMessageDialog(null,"Η χρέωση για τη δραστηριότητα έχει καταχωρηθεί επιτυχώς.");
+						JOptionPane.showMessageDialog(null,"Ξ— Ο‡ΟΞ­Ο‰ΟƒΞ· Ξ³ΞΉΞ± Ο„Ξ· Ξ΄ΟΞ±ΟƒΟ„Ξ·ΟΞΉΟΟ„Ξ·Ο„Ξ± Ξ­Ο‡ΞµΞΉ ΞΊΞ±Ο„Ξ±Ο‡Ο‰ΟΞ·ΞΈΞµΞ― ΞµΟ€ΞΉΟ„Ο…Ο‡ΟΟ‚.");
 					}
 					else {
-						JOptionPane.showMessageDialog(null,"Δεν είναι δυνατή η χρέωση σε αυτό το δωμάτιο. Πληκτρολογήστε έναν άλλον αριθμό δωματίου.");
+						JOptionPane.showMessageDialog(null,"Ξ”ΞµΞ½ ΞµΞ―Ξ½Ξ±ΞΉ Ξ΄Ο…Ξ½Ξ±Ο„Ξ® Ξ· Ο‡ΟΞ­Ο‰ΟƒΞ· ΟƒΞµ Ξ±Ο…Ο„Ο Ο„ΞΏ Ξ΄Ο‰ΞΌΞ¬Ο„ΞΉΞΏ. Ξ Ξ»Ξ·ΞΊΟ„ΟΞΏΞ»ΞΏΞ³Ξ®ΟƒΟ„Ξµ Ξ­Ξ½Ξ±Ξ½ Ξ¬Ξ»Ξ»ΞΏΞ½ Ξ±ΟΞΉΞΈΞΌΟ Ξ΄Ο‰ΞΌΞ±Ο„Ξ―ΞΏΟ….");
 					}
 					dispose();
 				}
 				catch(NumberFormatException ex) {
-					JOptionPane.showMessageDialog(null,"Συμπληρώστε όλα τα πεδία.");
+					JOptionPane.showMessageDialog(null,"Ξ£Ο…ΞΌΟ€Ξ»Ξ·ΟΟΟƒΟ„Ξµ ΟΞ»Ξ± Ο„Ξ± Ο€ΞµΞ΄Ξ―Ξ±.");
 				};
 			}
 		});

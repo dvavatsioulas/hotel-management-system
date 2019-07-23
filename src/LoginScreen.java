@@ -106,26 +106,26 @@ public final class LoginScreen extends JFrame {
 				String tempUsername = usernameField.getText();
 				String tempPassword = 	String.valueOf(passwordField.getPassword());
 				if(tempUsername.equals(USERNAME1) && tempPassword.equals(PASSWORD1)) {
-					JOptionPane.showMessageDialog(null,"Σύνδεση επιτυχής.");
+					JOptionPane.showMessageDialog(null,"Ξ£ΟΞ½Ξ΄ΞµΟƒΞ· ΞµΟ€ΞΉΟ„Ο…Ο‡Ξ®Ο‚.");
 					Registry.RS.setVisible(true);
 					Main.HS.setVisible(false);
 					setVisible(false);
 				}
 				else if(tempUsername.equals(USERNAME2) && tempPassword.equals(PASSWORD2)) {
-					JOptionPane.showMessageDialog(null,"Σύνδεση επιτυχής.");
+					JOptionPane.showMessageDialog(null,"Ξ£ΟΞ½Ξ΄ΞµΟƒΞ· ΞµΟ€ΞΉΟ„Ο…Ο‡Ξ®Ο‚.");
 					BarScreen.getInstance();					
 					Main.HS.setVisible(false);
 					setVisible(false);
 
 				}
 				else if(tempUsername.equals(USERNAME3) && tempPassword.equals(PASSWORD3)) {
-					JOptionPane.showMessageDialog(null,"Σύνδεση επιτυχής.");
+					JOptionPane.showMessageDialog(null,"Ξ£ΟΞ½Ξ΄ΞµΟƒΞ· ΞµΟ€ΞΉΟ„Ο…Ο‡Ξ®Ο‚.");
 					ActivitiesScreen.getInstance();
 					Main.HS.setVisible(false);
 					setVisible(false);
 				}
 				else {
-					JOptionPane.showMessageDialog(null,"Λάθος όνομα χρήστη ή κωδικός! Παρακαλώ ξαναπροσπαθήστε.");
+					JOptionPane.showMessageDialog(null,"Ξ›Ξ¬ΞΈΞΏΟ‚ ΟΞ½ΞΏΞΌΞ± Ο‡ΟΞ®ΟƒΟ„Ξ· Ξ® ΞΊΟ‰Ξ΄ΞΉΞΊΟΟ‚! Ξ Ξ±ΟΞ±ΞΊΞ±Ξ»Ο ΞΎΞ±Ξ½Ξ±Ο€ΟΞΏΟƒΟ€Ξ±ΞΈΞ®ΟƒΟ„Ξµ.");
 				}
 				usernameField.setText(null);
 				passwordField.setText(null);
@@ -144,7 +144,7 @@ public final class LoginScreen extends JFrame {
 		helpButton.setBounds(300, 110, 70, 34);
 		helpButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null,"Εάν επιθυμείτε αλλαγή Username ή/και κωδικου, ή εάν αντιμετωπίζετε προβλήματα σύνδεσης, επικοινωνήστε με τον διαχειριστή του συστήματος.");
+				JOptionPane.showMessageDialog(null,"Ξ•Ξ¬Ξ½ ΞµΟ€ΞΉΞΈΟ…ΞΌΞµΞ―Ο„Ξµ Ξ±Ξ»Ξ»Ξ±Ξ³Ξ® Username Ξ®/ΞΊΞ±ΞΉ ΞΊΟ‰Ξ΄ΞΉΞΊΞΏΟ…, Ξ® ΞµΞ¬Ξ½ Ξ±Ξ½Ο„ΞΉΞΌΞµΟ„Ο‰Ο€Ξ―Ξ¶ΞµΟ„Ξµ Ο€ΟΞΏΞ²Ξ»Ξ®ΞΌΞ±Ο„Ξ± ΟƒΟΞ½Ξ΄ΞµΟƒΞ·Ο‚, ΞµΟ€ΞΉΞΊΞΏΞΉΞ½Ο‰Ξ½Ξ®ΟƒΟ„Ξµ ΞΌΞµ Ο„ΞΏΞ½ Ξ΄ΞΉΞ±Ο‡ΞµΞΉΟΞΉΟƒΟ„Ξ® Ο„ΞΏΟ… ΟƒΟ…ΟƒΟ„Ξ®ΞΌΞ±Ο„ΞΏΟ‚.");
 			}
 		});
 		
