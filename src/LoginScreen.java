@@ -15,33 +15,33 @@ public final class LoginScreen extends JFrame {
     private static final String USERNAME3 = "activities";
     private static final String PASSWORD3 = "activities";
     private static LoginScreen INSTANCE = null;
-    private JPanel contentPane;
     private JTextField usernameField;
     private JPasswordField passwordField;
 
-    private LoginScreen() {
-        try {
+    private LoginScreen(){
+        try{
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
             SwingUtilities.updateComponentTreeUI(this);
-        } catch (Exception ignored) {
+        } catch (Exception ignored){
         }
         initialize();
     }
 
-    public static LoginScreen getInstance() {
-        if (INSTANCE == null) {
+    public static LoginScreen getInstance(){
+        if (INSTANCE == null){
             INSTANCE = new LoginScreen();
-        } else INSTANCE.setVisible(true);
+        } else
+            INSTANCE.setVisible(true);
         return INSTANCE;
     }
 
-    private void initialize() {
+    private void initialize(){
 
         setVisible(true);
         setTitle("\u0395\u03AF\u03C3\u03BF\u03B4\u03BF\u03C2 \u03A7\u03C1\u03AE\u03C3\u03C4\u03B7");
         setResizable(false);
         setBounds(100, 100, 394, 192);
-        contentPane = new JPanel();
+        JPanel contentPane = new JPanel();
         contentPane.setBackground(new Color(255, 255, 255));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
@@ -82,26 +82,26 @@ public final class LoginScreen extends JFrame {
         loginButton.setBounds(5, 110, 290, 34);
         loginButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
         loginButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
+            public void actionPerformed(ActionEvent arg0){
                 String tempUsername = usernameField.getText();
                 String tempPassword = String.valueOf(passwordField.getPassword());
-                if (tempUsername.equals(USERNAME1) && tempPassword.equals(PASSWORD1)) {
+                if (tempUsername.equals(USERNAME1) && tempPassword.equals(PASSWORD1)){
                     JOptionPane.showMessageDialog(null, "Σύνδεση επιτυχής.");
                     Registry.RS.setVisible(true);
                     Main.HS.setVisible(false);
                     setVisible(false);
-                } else if (tempUsername.equals(USERNAME2) && tempPassword.equals(PASSWORD2)) {
+                } else if (tempUsername.equals(USERNAME2) && tempPassword.equals(PASSWORD2)){
                     JOptionPane.showMessageDialog(null, "Σύνδεση επιτυχής.");
                     BarScreen.getInstance();
                     Main.HS.setVisible(false);
                     setVisible(false);
 
-                } else if (tempUsername.equals(USERNAME3) && tempPassword.equals(PASSWORD3)) {
+                } else if (tempUsername.equals(USERNAME3) && tempPassword.equals(PASSWORD3)){
                     JOptionPane.showMessageDialog(null, "Σύνδεση επιτυχής.");
                     ActivitiesScreen.getInstance();
                     Main.HS.setVisible(false);
                     setVisible(false);
-                } else {
+                } else{
                     JOptionPane.showMessageDialog(null, "Λάθος όνομα χρήστη ή κωδικός! Παρακαλώ ξαναπροσπαθήστε.");
                 }
                 usernameField.setText(null);
@@ -113,14 +113,14 @@ public final class LoginScreen extends JFrame {
         loginButton.setBackground(Color.WHITE);
         contentPane.add(loginButton);
         passwordField.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e){
                 loginButton.doClick();
             }
         });
         JButton helpButton = new JButton("?");
         helpButton.setBounds(300, 110, 70, 34);
         helpButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
+            public void actionPerformed(ActionEvent arg0){
                 JOptionPane.showMessageDialog(null, "Εάν επιθυμείτε αλλαγή Username ή/και κωδικου, ή εάν αντιμετωπίζετε προβλήματα σύνδεσης, επικοινωνήστε με τον διαχειριστή του συστήματος.");
             }
         });

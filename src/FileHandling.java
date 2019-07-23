@@ -3,11 +3,11 @@ import java.util.ArrayList;
 
 public class FileHandling {
 
-    public FileHandling() {
+    public FileHandling(){
     }
 
-    public static void readReservationsFromFile() {
-        try {
+    public static void readReservationsFromFile(){
+        try{
             FileInputStream fis = new FileInputStream("ReservationsData.db");
             ObjectInputStream ois = new ObjectInputStream(fis);
 
@@ -15,18 +15,18 @@ public class FileHandling {
 
             ois.close();
             fis.close();
-        } catch (IOException ioe) {
+        } catch (IOException ioe){
             ioe.printStackTrace();
             return;
-        } catch (ClassNotFoundException c) {
+        } catch (ClassNotFoundException c){
             System.out.println("Class not found");
             c.printStackTrace();
             return;
         }
     }
 
-    public static void readRoomsFromFile() {
-        try {
+    public static void readRoomsFromFile(){
+        try{
             FileInputStream fis = new FileInputStream("RoomsData.db");
             ObjectInputStream ois = new ObjectInputStream(fis);
 
@@ -34,18 +34,18 @@ public class FileHandling {
 
             ois.close();
             fis.close();
-        } catch (IOException ioe) {
+        } catch (IOException ioe){
             ioe.printStackTrace();
             return;
-        } catch (ClassNotFoundException c) {
+        } catch (ClassNotFoundException c){
             System.out.println("Class not found");
             c.printStackTrace();
             return;
         }
     }
 
-    public static void saveReservationsToFile() {
-        try {
+    public static void saveReservationsToFile(){
+        try{
             File rsv = new File("ReservationsData.db");
             rsv.delete();
 
@@ -54,13 +54,13 @@ public class FileHandling {
             oos.writeObject(Registry.reservations);
             oos.close();
             fos.close();
-        } catch (IOException ioe) {
+        } catch (IOException ioe){
             ioe.printStackTrace();
         }
     }
 
-    public static void saveRoomsToFile() {
-        try {
+    public static void saveRoomsToFile(){
+        try{
 
             File rooms = new File("RoomsData.db");
             rooms.delete();
@@ -70,7 +70,7 @@ public class FileHandling {
             oos.writeObject(Registry.rooms);
             oos.close();
             fos.close();
-        } catch (IOException ioe) {
+        } catch (IOException ioe){
             ioe.printStackTrace();
         }
     }

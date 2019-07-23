@@ -15,23 +15,23 @@ public class Reservation implements Serializable {
         this.totalCharge = totalCost;
     }
 
-    public Room getRoom() {
+    public Room getRoom(){
         return room;
     }
 
-    public String getClientName() {
+    public String getClientName(){
         return clientName;
     }
 
-    public double getTotalCharge() {
+    public double getTotalCharge(){
         return totalCharge;
     }
 
-    public void setTotalCharge(double totalCharge) {
+    public void setTotalCharge(double totalCharge){
         this.totalCharge = totalCharge;
     }
 
-    public int getStayCharge() {
+    public int getStayCharge(){
         return stayCharge;
     }
 

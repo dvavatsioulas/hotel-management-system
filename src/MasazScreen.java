@@ -7,25 +7,23 @@ import java.awt.event.ActionListener;
 public final class MasazScreen extends JFrame {
 
     private static MasazScreen INSTANCE = null;
-    private JPanel contentPane;
     private JTextField roomNoField;
     private JTextField hoursField;
     private double hours;
     private String roomNo;
     private double charge;
-    private JLabel label;
 
-    public MasazScreen() {
+    public MasazScreen(){
         setResizable(false);
-        try {
+        try{
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
             SwingUtilities.updateComponentTreeUI(this);
-        } catch (Exception ignored) {
+        } catch (Exception ignored){
         }
         setVisible(true);
         setTitle("\u039C\u03B1\u03C3\u03AC\u03B6");
         setBounds(100, 100, 450, 233);
-        contentPane = new JPanel();
+        JPanel contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
@@ -38,7 +36,7 @@ public final class MasazScreen extends JFrame {
 
         roomNoField = new JTextField();
         roomNoField.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e){
                 roomNo = roomNoField.getText();
             }
         });
@@ -54,7 +52,7 @@ public final class MasazScreen extends JFrame {
 
         hoursField = new JTextField();
         hoursField.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e){
                 hours = Integer.parseInt(hoursField.getText());
             }
         });
@@ -65,17 +63,17 @@ public final class MasazScreen extends JFrame {
 
         JButton okbutton = new JButton("OK");
         okbutton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                try {
+            public void actionPerformed(ActionEvent e){
+                try{
                     charge = hours * 10;
                     charge = Integer.parseInt(hoursField.getText()) * 10;
-                    if (Registry.addChargeToReservation(Integer.parseInt(roomNoField.getText()), charge)) {
+                    if (Registry.addChargeToReservation(Integer.parseInt(roomNoField.getText()), charge)){
                         JOptionPane.showMessageDialog(null, "Η χρέωση για τη δραστηριότητα έχει καταχωρηθεί επιτυχώς.");
-                    } else {
+                    } else{
                         JOptionPane.showMessageDialog(null, "Δεν είναι δυνατή η χρέωση σε αυτό το δωμάτιο. Πληκτρολογήστε έναν άλλον αριθμό δωματίου.");
                     }
                     dispose();
-                } catch (NumberFormatException ex) {
+                } catch (NumberFormatException ex){
                     JOptionPane.showMessageDialog(null, "Συμπληρώστε όλα τα πεδία.");
                 }
             }
@@ -84,17 +82,18 @@ public final class MasazScreen extends JFrame {
         okbutton.setFont(new Font("Tahoma", Font.BOLD, 18));
         contentPane.add(okbutton);
 
-        label = new JLabel("\u039C\u03B1\u03C3\u03AC\u03B6");
+        JLabel label = new JLabel("\u039C\u03B1\u03C3\u03AC\u03B6");
         label.setHorizontalAlignment(SwingConstants.CENTER);
         label.setFont(new Font("Tahoma", Font.BOLD, 26));
         label.setBounds(10, 10, 416, 50);
         contentPane.add(label);
     }
 
-    public static MasazScreen getInstance() {
-        if (INSTANCE == null) {
+    public static MasazScreen getInstance(){
+        if (INSTANCE == null){
             INSTANCE = new MasazScreen();
-        } else INSTANCE.setVisible(true);
+        } else
+            INSTANCE.setVisible(true);
         return INSTANCE;
     }
 

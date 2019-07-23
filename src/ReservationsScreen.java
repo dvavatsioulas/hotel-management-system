@@ -29,25 +29,25 @@ public class ReservationsScreen extends JFrame {
      * Create the application.
      */
 
-    public ReservationsScreen() {
+    public ReservationsScreen(){
 
         addWindowListener(new WindowAdapter() {
             @Override
-            public void windowClosing(WindowEvent e) {
+            public void windowClosing(WindowEvent e){
                 setVisible(false);
                 Main.HS.setVisible(true);
             }
         });
 
-        try {
+        try{
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
             SwingUtilities.updateComponentTreeUI(this);
-        } catch (Exception ignored) {
+        } catch (Exception ignored){
         }
         initialize();
     }
 
-    private void initialize() {
+    private void initialize(){
 
         setVisible(false);
         setTitle("\u0394\u03B9\u03B1\u03C7\u03B5\u03AF\u03C1\u03B9\u03C3\u03B7 \u039A\u03C1\u03B1\u03C4\u03AE\u03C3\u03B5\u03C9\u03BD");
@@ -78,18 +78,10 @@ public class ReservationsScreen extends JFrame {
         reservationsTable = new JTable();
         reservationsTable.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
         reservationsTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        reservationsTable.setModel(new DefaultTableModel(
-                new Object[][]{
-                },
-                new String[]{
-                        "\u0391\u03C1.\u0394\u03C9\u03BC.", "\u039F\u03BD\u03BF\u03BC\u03B1\u03C4\u03B5\u03C0\u03CE\u03BD\u03C5\u03BC\u03BF", "\u03A4\u03CD\u03C0\u03BF\u03C2 \u0394\u03C9\u03BC.", "\u039A\u03CC\u03C3\u03C4\u03BF\u03C2 \u0394\u03B9\u03B1\u03BC\u03BF\u03BD\u03AE\u03C2 (\u20AC)", "\u03A3\u03C5\u03BD. \u03A7\u03C1\u03AD\u03C9\u03C3\u03B7 (\u20AC)"
-                }
-        ) {
-            Class[] columnTypes = new Class[]{
-                    Integer.class, Object.class, Object.class, Object.class, Object.class
-            };
+        reservationsTable.setModel(new DefaultTableModel(new Object[][]{}, new String[]{"\u0391\u03C1.\u0394\u03C9\u03BC.", "\u039F\u03BD\u03BF\u03BC\u03B1\u03C4\u03B5\u03C0\u03CE\u03BD\u03C5\u03BC\u03BF", "\u03A4\u03CD\u03C0\u03BF\u03C2 \u0394\u03C9\u03BC.", "\u039A\u03CC\u03C3\u03C4\u03BF\u03C2 \u0394\u03B9\u03B1\u03BC\u03BF\u03BD\u03AE\u03C2 (\u20AC)", "\u03A3\u03C5\u03BD. \u03A7\u03C1\u03AD\u03C9\u03C3\u03B7 (\u20AC)"}) {
+            Class[] columnTypes = new Class[]{Integer.class, Object.class, Object.class, Object.class, Object.class};
 
-            public Class getColumnClass(int columnIndex) {
+            public Class getColumnClass(int columnIndex){
                 return columnTypes[columnIndex];
             }
         });
@@ -106,7 +98,7 @@ public class ReservationsScreen extends JFrame {
 
         addComponentListener(new ComponentAdapter() {
             @Override
-            public void componentShown(ComponentEvent e) {
+            public void componentShown(ComponentEvent e){
                 ((DefaultTableModel) reservationsTable.getModel()).fireTableDataChanged();
             }
         });
@@ -120,7 +112,7 @@ public class ReservationsScreen extends JFrame {
         JRadioButton oneBed = new JRadioButton("\u039C\u03BF\u03BD\u03CC\u03BA\u03BB\u03B9\u03BD\u03BF (35\u20AC/\u03B2\u03C1\u03AC\u03B4\u03C5)");
         oneBed.setFont(new Font("SansSerif", Font.BOLD, 12));
         oneBed.addItemListener(new ItemListener() {
-            public void itemStateChanged(ItemEvent arg0) {
+            public void itemStateChanged(ItemEvent arg0){
             }
         });
 
@@ -131,7 +123,7 @@ public class ReservationsScreen extends JFrame {
         JRadioButton twoBeds = new JRadioButton("\u0394\u03AF\u03BA\u03BB\u03B9\u03BD\u03BF(70\u20AC/\u03B2\u03C1\u03AC\u03B4\u03C5)");
         twoBeds.setFont(new Font("SansSerif", Font.BOLD, 12));
         twoBeds.addItemListener(new ItemListener() {
-            public void itemStateChanged(ItemEvent arg0) {
+            public void itemStateChanged(ItemEvent arg0){
             }
         });
         twoBeds.setBounds(125, 143, 180, 23);
@@ -140,7 +132,7 @@ public class ReservationsScreen extends JFrame {
         JRadioButton threeBeds = new JRadioButton("\u03A4\u03C1\u03AF\u03BA\u03BB\u03B9\u03BD\u03BF (100\u20AC/\u03B2\u03C1\u03AC\u03B4\u03C5)");
         threeBeds.setFont(new Font("SansSerif", Font.BOLD, 12));
         threeBeds.addItemListener(new ItemListener() {
-            public void itemStateChanged(ItemEvent arg0) {
+            public void itemStateChanged(ItemEvent arg0){
             }
         });
         threeBeds.setBounds(125, 169, 180, 23);
@@ -208,7 +200,7 @@ public class ReservationsScreen extends JFrame {
 
         roomNoField.addMouseListener(new MouseAdapter() {
             @Override
-            public void mousePressed(MouseEvent arg0) {
+            public void mousePressed(MouseEvent arg0){
                 roomNoField.setText(null);
             }
         });
@@ -216,8 +208,8 @@ public class ReservationsScreen extends JFrame {
 
         roomNoField.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyReleased(KeyEvent arg0) {
-                if (roomNoField.getText() != null) {
+            public void keyReleased(KeyEvent arg0){
+                if (roomNoField.getText() != null){
                     DefaultTableModel tableModel = (DefaultTableModel) reservationsTable.getModel();
                     TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(tableModel);
                     String search = roomNoField.getText().toUpperCase();
@@ -236,33 +228,33 @@ public class ReservationsScreen extends JFrame {
         JDateChooser fromDate = new JDateChooser();
         JDateChooser toDate = new JDateChooser();
         toDate.getCalendarButton().addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
+            public void actionPerformed(ActionEvent arg0){
             }
         });
 
         oneBed.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
+            public void actionPerformed(ActionEvent arg0){
                 tempType = 1;
                 costLabel.setText((Integer.toString(tempCostForLabel)));
                 fromDate.updateUI();
             }
         });
         twoBeds.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
+            public void actionPerformed(ActionEvent arg0){
                 tempType = 2;
                 costLabel.setText((Integer.toString(tempCostForLabel)));
                 fromDate.updateUI();
             }
         });
         threeBeds.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
+            public void actionPerformed(ActionEvent arg0){
                 tempType = 3;
                 costLabel.setText((Integer.toString(tempCostForLabel)));
                 fromDate.updateUI();
             }
         });
         fourBeds.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
+            public void actionPerformed(ActionEvent arg0){
                 tempType = 4;
                 costLabel.setText((Integer.toString(tempCostForLabel)));
                 fromDate.updateUI();
@@ -272,13 +264,13 @@ public class ReservationsScreen extends JFrame {
         reservationsTable.setDefaultEditor(Object.class, null);
 
         fromDate.addPropertyChangeListener(new PropertyChangeListener() {
-            public void propertyChange(PropertyChangeEvent arg0) {
-                try {
+            public void propertyChange(PropertyChangeEvent arg0){
+                try{
                     LocalDate from = LocalDate.fromDateFields(fromDate.getDate());
                     LocalDate to = LocalDate.fromDateFields(toDate.getDate());
                     nightStays = Days.daysBetween(from, to).getDays();
 
-                    if (nightStays > 0) {
+                    if (nightStays > 0){
                         int tempCost = 0;
                         if (tempType == 1)
                             tempCost = CHARGE_PER_NIGHT_1B * nightStays;
@@ -292,12 +284,12 @@ public class ReservationsScreen extends JFrame {
 
                         staysLabel.setText(Integer.toString(nightStays));
                         costLabel.setText((Integer.toString(tempCost)));
-                    } else {
+                    } else{
                         staysLabel.setText("--");
                         costLabel.setText("-- ");
                         JOptionPane.showMessageDialog(null, "Επιλέξτε ημερομηνία check-out μεταγενέστερη της ημερομηνίας check-in.");
                     }
-                } catch (IllegalArgumentException e) {
+                } catch (IllegalArgumentException e){
                 }
             }
         });
@@ -306,14 +298,14 @@ public class ReservationsScreen extends JFrame {
         panel.add(fromDate);
 
         toDate.addPropertyChangeListener(new PropertyChangeListener() {
-            public void propertyChange(PropertyChangeEvent evt) {
+            public void propertyChange(PropertyChangeEvent evt){
 
-                try {
+                try{
                     LocalDate from = LocalDate.fromDateFields(fromDate.getDate());
                     LocalDate to = LocalDate.fromDateFields(toDate.getDate());
                     nightStays = Days.daysBetween(from, to).getDays();
 
-                    if (nightStays > 0) {
+                    if (nightStays > 0){
                         int tempCost = 0;
                         if (tempType == 1)
                             tempCost = CHARGE_PER_NIGHT_1B * nightStays;
@@ -326,12 +318,12 @@ public class ReservationsScreen extends JFrame {
 
                         staysLabel.setText(Integer.toString(nightStays));
                         costLabel.setText((Integer.toString(tempCost)));
-                    } else {
+                    } else{
                         staysLabel.setText("--");
                         costLabel.setText("-- ");
                         JOptionPane.showMessageDialog(null, "Επιλέξτε ημερομηνία check-out μεταγενέστερη της ημερομηνίας check-in.");
                     }
-                } catch (IllegalArgumentException e) {
+                } catch (IllegalArgumentException e){
                 }
             }
         });
@@ -339,15 +331,15 @@ public class ReservationsScreen extends JFrame {
         panel.add(toDate);
 
         DeleteClient.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                if (reservationsTable.getSelectionModel().isSelectionEmpty()) {
+            public void actionPerformed(ActionEvent arg0){
+                if (reservationsTable.getSelectionModel().isSelectionEmpty()){
                     JOptionPane.showMessageDialog(null, "Δεν έχει επιλεχθεί κράτηση.");
-                } else {
+                } else{
                     Integer selectedRoomNumber = (Integer) reservationsTable.getModel().getValueAt(reservationsTable.getSelectedRow(), 0);
 
-                    for (Reservation rsv : Registry.reservations) {
+                    for (Reservation rsv : Registry.reservations){
 
-                        if (rsv.getRoom().getRoomNumber() == selectedRoomNumber) {
+                        if (rsv.getRoom().getRoomNumber() == selectedRoomNumber){
 
                             Registry.reservations.remove(rsv);
                             ((DefaultTableModel) reservationsTable.getModel()).removeRow(reservationsTable.getSelectedRow());
@@ -357,8 +349,8 @@ public class ReservationsScreen extends JFrame {
 
                     }
 
-                    for (Room room : Registry.rooms) {
-                        if (room.getRoomNumber() == selectedRoomNumber) {
+                    for (Room room : Registry.rooms){
+                        if (room.getRoomNumber() == selectedRoomNumber){
                             room.setFree(true);
                             break;
                         }
@@ -366,12 +358,12 @@ public class ReservationsScreen extends JFrame {
 
                     roomNoField.setText(" ");  // adeiazo to textfield, kai pleon den efarmozetai kanena filtro sto jtable
 
-                    try {
+                    try{
                         roomNoField.requestFocus();
                         Robot robot = new Robot();
                         robot.keyPress(KeyEvent.VK_BACK_SPACE);
                         robot.keyRelease(KeyEvent.VK_BACK_SPACE);
-                    } catch (Exception exp) {
+                    } catch (Exception exp){
                         exp.printStackTrace();
                     }
                 }
@@ -379,35 +371,34 @@ public class ReservationsScreen extends JFrame {
         });
 
         bookRoomBtn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
+            public void actionPerformed(ActionEvent arg0){
                 String tempName = nameField.getText();
                 boolean isEverythingFilled = true;
 
-                if (tempName.isEmpty()) {
+                if (tempName.isEmpty()){
                     JOptionPane.showMessageDialog(null, "Παρακαλώ εισάγετε ονοματεπώνυμο");
                     isEverythingFilled = false;
                 }
 
-                if (radioButtonGroup.getSelection() == null) {
+                if (radioButtonGroup.getSelection() == null){
                     JOptionPane.showMessageDialog(panel, "Παρακαλώ επιλέξτε τύπο δωματίου!");
                     isEverythingFilled = false;
                 }
 
-                if (isEverythingFilled) { //an exoun simplirothei ta aparaitita stoixeia sto gui tote
+                if (isEverythingFilled){ //an exoun simplirothei ta aparaitita stoixeia sto gui tote
 
                     Room availableRoom = Registry.returnAvailableRoom(tempType);//psakse an iparxei diathesimo dwmatio tou epithimitoy typou, an nai epestrepse to
 
-                    if (availableRoom != null) { //an iparxei domatio tote kane tin kratisi kai valtin sti lista
+                    if (availableRoom != null){ //an iparxei domatio tote kane tin kratisi kai valtin sti lista
 
                         availableRoom.setFree(false);
                         int tempRoomNumber = availableRoom.getRoomNumber();
 
-                        try {
+                        try{
                             reservation = new Reservation(tempName, availableRoom, Integer.parseInt(costLabel.getText()), Double.parseDouble(costLabel.getText()));
                             Registry.reservations.add(reservation);
 
-                            JOptionPane.showMessageDialog(null, "Η κράτηση έγινε επιτυχώς!" + "\n" + "Στοιχεία: " + "\n" + "Αριθμός δωματίου:" + tempRoomNumber +
-                                    "\n" + "Όνοματεπώνυμο: " + tempName + "\n" + "Τύπος δωματίου: " + tempType + "κλινο\n");
+                            JOptionPane.showMessageDialog(null, "Η κράτηση έγινε επιτυχώς!" + "\n" + "Στοιχεία: " + "\n" + "Αριθμός δωματίου:" + tempRoomNumber + "\n" + "Όνοματεπώνυμο: " + tempName + "\n" + "Τύπος δωματίου: " + tempType + "κλινο\n");
 
                             ((DefaultTableModel) reservationsTable.getModel()).addRow(new Object[]{tempRoomNumber, tempName, tempType + "κλινο", Integer.parseInt(costLabel.getText()), Double.parseDouble(costLabel.getText())});
                             staysLabel.setText("--");
@@ -416,38 +407,39 @@ public class ReservationsScreen extends JFrame {
                             toDate.setCalendar(null);
                             nameField.setText(null);
                             radioButtonGroup.clearSelection();
-                        } catch (NumberFormatException e) {
+                        } catch (NumberFormatException e){
                             JOptionPane.showMessageDialog(null, "Παρακαλώ επιλέξτε ημερομηνίες check-in και check-out.");
                         }
                     } else
                         JOptionPane.showMessageDialog(null, "Δεν υπάρχει διαθέσιμο δωμάτιο του επιλεγμένου τύπου."); //an den iparxei domatio emfanise minima
                 }
 
-                for (Reservation r : Registry.reservations) {
+                for (Reservation r : Registry.reservations){
                     System.out.println(r.getClientName());
                 }
             }
         });
     }
 
-    public void updateChargeInTable(int roomNo) {
+    public void updateChargeInTable(int roomNo){
         double tempCharge = 0;
-        for (Reservation r : Registry.reservations) {
-            if (roomNo == r.getRoom().getRoomNumber()) {
+        for (Reservation r : Registry.reservations){
+            if (roomNo == r.getRoom().getRoomNumber()){
                 tempCharge = r.getTotalCharge();
             }
 
-            for (int i = 0; i < reservationsTable.getRowCount(); i++) {
-                if (reservationsTable.getModel().getValueAt(i, 0).equals(roomNo)) {
+            for (int i = 0; i < reservationsTable.getRowCount(); i++){
+                if (reservationsTable.getModel().getValueAt(i, 0).equals(roomNo)){
                     reservationsTable.getModel().setValueAt(tempCharge, i, 4);
                 }
             }
         }
     }
 
-    public void addReservationsToTable() {
-        for (Reservation rsv : Registry.reservations) {
+    public void addReservationsToTable(){
+        for (Reservation rsv : Registry.reservations){
             ((DefaultTableModel) reservationsTable.getModel()).addRow(new Object[]{rsv.getRoom().getRoomNumber(), rsv.getClientName(), rsv.getRoom().getRoomType() + "κλινο", rsv.getStayCharge(), rsv.getTotalCharge()});
         }
     }
+
 }

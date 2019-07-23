@@ -7,25 +7,23 @@ import java.awt.event.ActionListener;
 public final class SaunaScreen extends JFrame {
 
     private static SaunaScreen INSTANCE = null;
-    private JPanel contentPane;
     private JTextField textRoomNo;
     private JTextField textHours;
     private double hours;
     private String roomNo;
     private double charge;
-    private JLabel label;
 
-    private SaunaScreen() {
+    private SaunaScreen(){
         setResizable(false);
-        try {
+        try{
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
             SwingUtilities.updateComponentTreeUI(this);
-        } catch (Exception ignored) {
+        } catch (Exception ignored){
         }
         setVisible(true);
         setTitle("\u03A3\u03AC\u03BF\u03C5\u03BD\u03B1");
         setBounds(100, 100, 450, 240);
-        contentPane = new JPanel();
+        JPanel contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
@@ -38,7 +36,7 @@ public final class SaunaScreen extends JFrame {
 
         textRoomNo = new JTextField();
         textRoomNo.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e){
                 roomNo = textRoomNo.getText();
             }
         });
@@ -54,7 +52,7 @@ public final class SaunaScreen extends JFrame {
 
         textHours = new JTextField();
         textHours.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e){
                 hours = Integer.parseInt(textHours.getText());
             }
         });
@@ -65,20 +63,20 @@ public final class SaunaScreen extends JFrame {
 
         JButton okbutton = new JButton("OK");
         okbutton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                try {
+            public void actionPerformed(ActionEvent e){
+                try{
                     if (hours > 2)
                         JOptionPane.showMessageDialog(null, "Only 2 hours/person !");
                     else
                         charge = hours * 10;
                     charge = Integer.parseInt(textHours.getText()) * 10;
-                    if (Registry.addChargeToReservation(Integer.parseInt(textRoomNo.getText()), charge)) {
+                    if (Registry.addChargeToReservation(Integer.parseInt(textRoomNo.getText()), charge)){
                         JOptionPane.showMessageDialog(null, "Η χρέωση για τη δραστηριότητα έχει καταχωρηθεί επιτυχώς.");
-                    } else {
+                    } else{
                         JOptionPane.showMessageDialog(null, "Δεν είναι δυνατή η χρέωση σε αυτό το δωμάτιο. Πληκτρολογήστε έναν άλλον αριθμό δωματίου.");
                     }
                     dispose();
-                } catch (NumberFormatException ex) {
+                } catch (NumberFormatException ex){
                     JOptionPane.showMessageDialog(null, "Συμπληρώστε όλα τα πεδία.");
                 }
 
@@ -88,17 +86,18 @@ public final class SaunaScreen extends JFrame {
         okbutton.setFont(new Font("Tahoma", Font.BOLD, 18));
         contentPane.add(okbutton);
 
-        label = new JLabel("\u03A3\u03AC\u03BF\u03C5\u03BD\u03B1");
+        JLabel label = new JLabel("\u03A3\u03AC\u03BF\u03C5\u03BD\u03B1");
         label.setFont(new Font("Tahoma", Font.BOLD, 26));
         label.setHorizontalAlignment(SwingConstants.CENTER);
         label.setBounds(10, 10, 416, 50);
         contentPane.add(label);
     }
 
-    public static SaunaScreen getInstance() {
-        if (INSTANCE == null) {
+    public static SaunaScreen getInstance(){
+        if (INSTANCE == null){
             INSTANCE = new SaunaScreen();
-        } else INSTANCE.setVisible(true);
+        } else
+            INSTANCE.setVisible(true);
         return INSTANCE;
     }
 

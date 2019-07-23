@@ -2,7 +2,7 @@ public class Main {
 
     public static HomeScreen HS;
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
 
         FileHandling.readReservationsFromFile(); //diavasma twn kratisewn apo to arxeio
         FileHandling.readRoomsFromFile();         //diavasma twn dwmatiwn apo to arxeio

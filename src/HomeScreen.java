@@ -9,14 +9,13 @@ import java.awt.event.WindowEvent;
 public final class HomeScreen extends JFrame {
 
     private static HomeScreen INSTANCE = null;
-    private JPanel contentPane;
     private LoginScreen LS;
     private BarScreen BS;
 
-    private HomeScreen() {
+    private HomeScreen(){
         addWindowListener(new WindowAdapter() {
             @Override
-            public void windowClosing(WindowEvent e) {
+            public void windowClosing(WindowEvent e){
 
                 FileHandling.saveReservationsToFile();
                 FileHandling.saveRoomsToFile();
@@ -24,28 +23,29 @@ public final class HomeScreen extends JFrame {
             }
         });
 
-        try {
+        try{
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
             SwingUtilities.updateComponentTreeUI(this);
-        } catch (Exception ignored) {
+        } catch (Exception ignored){
         }
         initialize();
     }
 
-    public static HomeScreen getInstance() {
-        if (INSTANCE == null) {
+    public static HomeScreen getInstance(){
+        if (INSTANCE == null){
             INSTANCE = new HomeScreen();
-        } else INSTANCE.setVisible(true);
+        } else
+            INSTANCE.setVisible(true);
         return INSTANCE;
     }
 
-    private void initialize() {
+    private void initialize(){
         setVisible(true);
         setResizable(false);
         setTitle("\u03A3\u03CD\u03C3\u03C4\u03B7\u03BC\u03B1 \u0394\u03B9\u03B1\u03C7\u03B5\u03AF\u03C1\u03B9\u03C3\u03B7\u03C2 \u039E\u03B5\u03BD\u03BF\u03B4\u03BF\u03C7\u03B5\u03AF\u03BF\u03C5");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 643, 187);
-        contentPane = new JPanel();
+        JPanel contentPane = new JPanel();
         contentPane.setBackground(Color.WHITE);
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
@@ -59,7 +59,7 @@ public final class HomeScreen extends JFrame {
 
         JButton viewBarButton = new JButton("\u0395\u03C3\u03C4\u03B9\u03B1\u03C4\u03CC\u03C1\u03B9\u03BF-\u039C\u03C0\u03B1\u03C1");
         viewBarButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
+            public void actionPerformed(ActionEvent arg0){
                 LoginScreen.getInstance().setVisible(true);
             }
         });
@@ -67,14 +67,14 @@ public final class HomeScreen extends JFrame {
         JButton viewReservationsButton = new JButton("\u0394\u03B9\u03B1\u03C7\u03B5\u03AF\u03C1\u03B9\u03C3\u03B7 \u039A\u03C1\u03B1\u03C4\u03AE\u03C3\u03B5\u03C9\u03BD");
         viewReservationsButton.setFont(new Font("Tahoma", Font.BOLD, 14));
         viewReservationsButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
+            public void actionPerformed(ActionEvent arg0){
                 LoginScreen.getInstance().setVisible(true);
             }
         });
 
         JButton viewActivitiesButton = new JButton("\u0394\u03C1\u03B1\u03C3\u03C4\u03B7\u03C1\u03B9\u03CC\u03C4\u03B7\u03C4\u03B5\u03C2");
         viewActivitiesButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e){
                 LoginScreen.getInstance().setVisible(true);
             }
         });

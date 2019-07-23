@@ -6,25 +6,25 @@ public class Room implements Serializable {
     private int roomType;
     private boolean isFree = true;
 
-    public Room(int roomNumber, int roomType, boolean isFree) {
+    public Room(int roomNumber, int roomType, boolean isFree){
         this.roomNumber = roomNumber;
         this.roomType = roomType;
         this.isFree = isFree;
     }
 
-    public int getRoomNumber() {
+    public int getRoomNumber(){
         return roomNumber;
     }
 
-    public int getRoomType() {
+    public int getRoomType(){
         return roomType;
     }
 
-    public boolean isFree() {
+    public boolean isFree(){
         return isFree;
     }
 
-    public void setFree(boolean isFree) {
+    public void setFree(boolean isFree){
         this.isFree = isFree;
     }
 }

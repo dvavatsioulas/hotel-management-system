@@ -25,14 +25,14 @@ public abstract class Registry {
 			rooms.add(new Room(i, random.nextInt(4)+1,true));
 	}*/
 
-    public static ArrayList<Reservation> getReservations() {
+    public static ArrayList<Reservation> getReservations(){
         return reservations;
     }
 
-    public static Room returnAvailableRoom(int roomType) { //elegxei an iparxei diathesimo dwmatio toy epithimitoy typou, kai an yparxei epistrefei to dwmatio kai kanei to isFree=false
+    public static Room returnAvailableRoom(int roomType){ //elegxei an iparxei diathesimo dwmatio toy epithimitoy typou, kai an yparxei epistrefei to dwmatio kai kanei to isFree=false
         Room selectedRoom = null;
-        for (Room r : rooms) {
-            if (roomType == r.getRoomType() && r.isFree()) {
+        for (Room r : rooms){
+            if (roomType == r.getRoomType() && r.isFree()){
                 selectedRoom = r;
                 //r.setFree(false);
                 break;
@@ -41,9 +41,9 @@ public abstract class Registry {
         return selectedRoom;
     }
 
-    public static boolean addChargeToReservation(int roomNo, double charge) {
-        for (Reservation r : reservations) {
-            if (roomNo == r.getRoom().getRoomNumber()) {
+    public static boolean addChargeToReservation(int roomNo, double charge){
+        for (Reservation r : reservations){
+            if (roomNo == r.getRoom().getRoomNumber()){
                 double previousCharge = r.getTotalCharge();
 
                 r.setTotalCharge(previousCharge + charge);

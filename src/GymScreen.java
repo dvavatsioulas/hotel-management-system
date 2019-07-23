@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 public final class GymScreen extends JFrame {
 
     private static GymScreen INSTANCE = null;
-    private JPanel contentPane;
     private JTextField roomNoField;
     private JTextField hoursField;
     private double hours;
@@ -15,17 +14,17 @@ public final class GymScreen extends JFrame {
     private double charge;
     private boolean personalTrainer;
 
-    private GymScreen() {
+    private GymScreen(){
         setResizable(false);
-        try {
+        try{
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
             SwingUtilities.updateComponentTreeUI(this);
-        } catch (Exception ignored) {
+        } catch (Exception ignored){
         }
         setVisible(true);
         setTitle("\u0393\u03C5\u03BC\u03BD\u03B1\u03C3\u03C4\u03AE\u03C1\u03B9\u03BF");
         setBounds(100, 100, 411, 259);
-        contentPane = new JPanel();
+        JPanel contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
@@ -38,7 +37,7 @@ public final class GymScreen extends JFrame {
 
         roomNoField = new JTextField();
         roomNoField.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e){
                 String roomNo = roomNoField.getText();
             }
         });
@@ -54,7 +53,7 @@ public final class GymScreen extends JFrame {
 
         hoursField = new JTextField();
         hoursField.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e){
                 int hours = Integer.parseInt(hoursField.getText());
             }
         });
@@ -65,20 +64,20 @@ public final class GymScreen extends JFrame {
 
         JButton okbutton = new JButton("OK");
         okbutton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                try {
+            public void actionPerformed(ActionEvent e){
+                try{
                     if (personalTrainer)
                         charge = Integer.parseInt(hoursField.getText()) * 15;
                     else
                         charge = Integer.parseInt(hoursField.getText()) * 10;
 
-                    if (Registry.addChargeToReservation(Integer.parseInt(roomNoField.getText()), charge)) {
+                    if (Registry.addChargeToReservation(Integer.parseInt(roomNoField.getText()), charge)){
                         JOptionPane.showMessageDialog(null, "Η χρέωση για τη δραστηριότητα έχει καταχωρηθεί επιτυχώς.");
-                    } else {
+                    } else{
                         JOptionPane.showMessageDialog(null, "Δεν είναι δυνατή η χρέωση σε αυτό το δωμάτιο. Πληκτρολογήστε έναν άλλον αριθμό δωματίου.");
                     }
                     dispose();
-                } catch (NumberFormatException ex) {
+                } catch (NumberFormatException ex){
                     JOptionPane.showMessageDialog(null, "Συμπληρώστε όλα τα πεδία.");
                 }
             }
@@ -89,7 +88,7 @@ public final class GymScreen extends JFrame {
 
         JCheckBox chckbxPersonalTrainer = new JCheckBox("Personal Trainer (+10\u20AC/\u03CE\u03C1\u03B1) ");
         chckbxPersonalTrainer.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e){
                 personalTrainer = true;
             }
         });
@@ -104,10 +103,11 @@ public final class GymScreen extends JFrame {
         contentPane.add(lblNewLabel);
     }
 
-    public static GymScreen getInstance() {
-        if (INSTANCE == null) {
+    public static GymScreen getInstance(){
+        if (INSTANCE == null){
             INSTANCE = new GymScreen();
-        } else INSTANCE.setVisible(true);
+        } else
+            INSTANCE.setVisible(true);
         return INSTANCE;
     }
 

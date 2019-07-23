@@ -10,53 +10,50 @@ import java.util.ArrayList;
 
 public final class BarScreen extends JFrame {
     private static BarScreen INSTANCE = null;
-    private JPanel contentPane;
     private JList list;
     private int Quantity;
     private JList list_1;
     private JTable table;
     private JTextField orderChargeField;
-    private JLabel chargeLabel;
     private Double barCharge = 0.0;
-    private JButton deleteButton;
-    private JScrollPane scrollPane_1;
     private ArrayList<Product> deserts = new ArrayList<>();
     private ArrayList<Product> drinks = new ArrayList<>();
     private ArrayList<Product> salads = new ArrayList<>();
     private ArrayList<Product> mainCourse = new ArrayList<>();
     private JTextField roomNoField;
 
-    private BarScreen() {
+    private BarScreen(){
         addWindowListener(new WindowAdapter() {
             @Override
-            public void windowClosing(WindowEvent e) {
+            public void windowClosing(WindowEvent e){
                 setVisible(false);
                 Main.HS.setVisible(true);
             }
         });
 
-        try {
+        try{
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
             SwingUtilities.updateComponentTreeUI(this);
-        } catch (Exception ignored) {
+        } catch (Exception ignored){
         }
         initialize();
     }
 
-    public static BarScreen getInstance() {
+    public static BarScreen getInstance(){
         if (INSTANCE == null)
             INSTANCE = new BarScreen();
-        else INSTANCE.setVisible(true);
+        else
+            INSTANCE.setVisible(true);
         return INSTANCE;
     }
 
-    private void initialize() {
+    private void initialize(){
 
         setVisible(true);
         setResizable(false);
         setTitle("Order Screen");
         setBounds(0, 0, 807, 429);
-        contentPane = new JPanel();
+        JPanel contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         contentPane.setLayout(new BorderLayout(0, 0));
         setContentPane(contentPane);
@@ -118,24 +115,16 @@ public final class BarScreen extends JFrame {
         panel.add(orderChargeField);
         orderChargeField.setColumns(10);
 
-        scrollPane_1 = new JScrollPane();
+        JScrollPane scrollPane_1 = new JScrollPane();
         scrollPane_1.setBounds(244, 11, 533, 313);
         panel.add(scrollPane_1);
 
         table = new JTable();
         scrollPane_1.setViewportView(table);
-        table.setModel(new DefaultTableModel(
-                new Object[][]{
-                },
-                new String[]{
-                        "\u03A0\u03C1\u03BF\u03CA\u03CC\u03BD", "\u03A0\u03BF\u03C3\u03CC\u03C4\u03B7\u03C4\u03B1", "\u039C\u03B5\u03C1\u03B9\u03BA\u03CC \u03A3\u03CD\u03BD\u03BF\u03BB\u03BF"
-                }
-        ) {
-            boolean[] columnEditables = new boolean[]{
-                    false, false, false
-            };
+        table.setModel(new DefaultTableModel(new Object[][]{}, new String[]{"\u03A0\u03C1\u03BF\u03CA\u03CC\u03BD", "\u03A0\u03BF\u03C3\u03CC\u03C4\u03B7\u03C4\u03B1", "\u039C\u03B5\u03C1\u03B9\u03BA\u03CC \u03A3\u03CD\u03BD\u03BF\u03BB\u03BF"}) {
+            boolean[] columnEditables = new boolean[]{false, false, false};
 
-            public boolean isCellEditable(int row, int column) {
+            public boolean isCellEditable(int row, int column){
                 return columnEditables[column];
             }
         });
@@ -143,16 +132,16 @@ public final class BarScreen extends JFrame {
         table.getColumnModel().getColumn(1).setPreferredWidth(146);
         table.getColumnModel().getColumn(2).setPreferredWidth(132);
 
-        chargeLabel = new JLabel("\u03A3\u03CD\u03BD\u03BF\u03BB\u03BF (\u20AC):");
+        JLabel chargeLabel = new JLabel("\u03A3\u03CD\u03BD\u03BF\u03BB\u03BF (\u20AC):");
         chargeLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
         chargeLabel.setBounds(608, 325, 99, 26);
         panel.add(chargeLabel);
 
-        deleteButton = new JButton("\u0394\u03B9\u03B1\u03B3\u03C1\u03B1\u03C6\u03AE \u0395\u03C0\u03B9\u03BB\u03B5\u03B3\u03BC\u03AD\u03BD\u03BF\u03C5");
+        JButton deleteButton = new JButton("\u0394\u03B9\u03B1\u03B3\u03C1\u03B1\u03C6\u03AE \u0395\u03C0\u03B9\u03BB\u03B5\u03B3\u03BC\u03AD\u03BD\u03BF\u03C5");
         deleteButton.setForeground(new Color(204, 0, 51));
         deleteButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                try {
+            public void actionPerformed(ActionEvent arg0){
+                try{
 
                     Object temp = (table.getModel().getValueAt(table.getSelectedRow(), 2));
                     String tempstring = (String) temp;
@@ -162,7 +151,7 @@ public final class BarScreen extends JFrame {
 
                     ((DefaultTableModel) table.getModel()).removeRow(table.getSelectedRow());
                     orderChargeField.setText(barCharge + "");
-                } catch (ArrayIndexOutOfBoundsException e) {
+                } catch (ArrayIndexOutOfBoundsException e){
                     JOptionPane.showMessageDialog(null, "Δεν υπάρχει κάποιο προϊόν για να διαγραφεί.");
                 }
             }
@@ -194,10 +183,10 @@ public final class BarScreen extends JFrame {
         JButton drinksButton = new JButton("+");
         drinksButton.setFont(new Font("Dialog", Font.BOLD, 11));
         drinksButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e){
                 String tempstring = (String) drinksComboBox.getSelectedItem();
-                for (Product p : drinks) {
-                    if (tempstring.equals(p.getName())) {
+                for (Product p : drinks){
+                    if (tempstring.equals(p.getName())){
                         ((DefaultTableModel) table.getModel()).addRow(new Object[]{tempstring, spinner_drinks.getValue(), (p.getPrice() * ((Integer) spinner_drinks.getValue())) + ""});
 
                         barCharge += p.getPrice() * (Integer) spinner_drinks.getValue();
@@ -212,10 +201,10 @@ public final class BarScreen extends JFrame {
         JButton desertsButton = new JButton("+");
         desertsButton.setFont(new Font("Dialog", Font.BOLD, 11));
         desertsButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e){
                 String tempstring = (String) desertsComboBox.getSelectedItem();
-                for (Product p : deserts) {
-                    if (tempstring.equals(p.getName())) {
+                for (Product p : deserts){
+                    if (tempstring.equals(p.getName())){
 
                         ((DefaultTableModel) table.getModel()).addRow(new Object[]{tempstring, spinner_deserts.getValue(), (p.getPrice() * ((Integer) spinner_deserts.getValue())) + ""});
 
@@ -231,10 +220,10 @@ public final class BarScreen extends JFrame {
         JButton saladsButton = new JButton("+");
         saladsButton.setFont(new Font("Dialog", Font.BOLD, 11));
         saladsButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e){
                 String tempstring = (String) saladsComboBox.getSelectedItem();
-                for (Product p : salads) {
-                    if (tempstring.equals(p.getName())) {
+                for (Product p : salads){
+                    if (tempstring.equals(p.getName())){
 
                         ((DefaultTableModel) table.getModel()).addRow(new Object[]{tempstring, spinner_salads.getValue(), (p.getPrice() * ((Integer) spinner_salads.getValue())) + ""});
 
@@ -250,10 +239,10 @@ public final class BarScreen extends JFrame {
         JButton mainCourseButton = new JButton("+");
         mainCourseButton.setFont(new Font("Dialog", Font.BOLD, 11));
         mainCourseButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e){
                 String tempstring = (String) mainCourseComboBox.getSelectedItem();
-                for (Product p : mainCourse) {
-                    if (tempstring.equals(p.getName())) {
+                for (Product p : mainCourse){
+                    if (tempstring.equals(p.getName())){
 
                         ((DefaultTableModel) table.getModel()).addRow(new Object[]{tempstring, spinner_mainCourse.getValue(), (p.getPrice() * ((Integer) spinner_mainCourse.getValue())) + ""});
 
@@ -307,19 +296,19 @@ public final class BarScreen extends JFrame {
 
         JButton sendOrderButton = new JButton("\u0391\u03C0\u03BF\u03C3\u03C4\u03BF\u03BB\u03AE \u03A0\u03B1\u03C1\u03B1\u03B3\u03B3\u03B5\u03BB\u03AF\u03B1\u03C2");
         sendOrderButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e){
 
-                try {
-                    if (table.getModel().getRowCount() == 0) {
+                try{
+                    if (table.getModel().getRowCount() == 0){
                         JOptionPane.showMessageDialog(null, "Δεν έχει προστεθεί κάποιο προϊόν");
-                    } else {
-                        if (Registry.addChargeToReservation(Integer.parseInt(roomNoField.getText()), barCharge)) {
+                    } else{
+                        if (Registry.addChargeToReservation(Integer.parseInt(roomNoField.getText()), barCharge)){
                             JOptionPane.showMessageDialog(null, "Η παραγγελία έχει καταχωρηθεί επιτυχώς.");
-                        } else {
+                        } else{
                             JOptionPane.showMessageDialog(null, "Δεν είναι δυνατή η παραγγελία για αυτό το δωμάτιο. Πληκτρολογήστε έναν άλλον αριθμό δωματίου.");
                         }
                     }
-                } catch (NumberFormatException ex) {
+                } catch (NumberFormatException ex){
                     JOptionPane.showMessageDialog(null, "Συμπληρώστε έγκυρο αριθμό δωματίου.");
                 }
 

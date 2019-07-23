@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 public final class GolfScreen extends JFrame {
 
     private static GolfScreen INSTANCE = null;
-    private JPanel contentPane;
     private JTextField roomNoField;
     private JTextField hoursField;
     private JTextField extraBastouniaField;
@@ -16,17 +15,17 @@ public final class GolfScreen extends JFrame {
     private String roomNo;
     private double charge;
 
-    private GolfScreen() {
+    private GolfScreen(){
         setResizable(false);
-        try {
+        try{
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
             SwingUtilities.updateComponentTreeUI(this);
-        } catch (Exception ignored) {
+        } catch (Exception ignored){
         }
         setVisible(true);
         setTitle("Mini Golf");
         setBounds(100, 100, 450, 261);
-        contentPane = new JPanel();
+        JPanel contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
@@ -40,7 +39,7 @@ public final class GolfScreen extends JFrame {
 
         roomNoField = new JTextField();
         roomNoField.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e){
                 roomNo = roomNoField.getText();
             }
         });
@@ -56,7 +55,7 @@ public final class GolfScreen extends JFrame {
 
         hoursField = new JTextField();
         hoursField.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e){
                 hours = Integer.parseInt(hoursField.getText());
             }
         });
@@ -72,7 +71,7 @@ public final class GolfScreen extends JFrame {
 
         extraBastouniaField = new JTextField();
         extraBastouniaField.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e){
                 extraBastounia = Integer.parseInt(extraBastouniaField.getText());
             }
         });
@@ -83,16 +82,16 @@ public final class GolfScreen extends JFrame {
 
         JButton okbutton = new JButton("OK");
         okbutton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                try {
+            public void actionPerformed(ActionEvent e){
+                try{
                     charge = Integer.parseInt(hoursField.getText()) * 10 + Integer.parseInt(extraBastouniaField.getText()) * 5;
-                    if (Registry.addChargeToReservation(Integer.parseInt(roomNoField.getText()), charge)) {
+                    if (Registry.addChargeToReservation(Integer.parseInt(roomNoField.getText()), charge)){
                         JOptionPane.showMessageDialog(null, "Η χρέωση για τη δραστηριότητα έχει καταχωρηθεί επιτυχώς.");
-                    } else {
+                    } else{
                         JOptionPane.showMessageDialog(null, "Δεν είναι δυνατή η χρέωση σε αυτό το δωμάτιο. Πληκτρολογήστε έναν άλλον αριθμό δωματίου.");
                     }
                     dispose();
-                } catch (NumberFormatException ex) {
+                } catch (NumberFormatException ex){
                     JOptionPane.showMessageDialog(null, "Συμπληρώστε όλα τα πεδία.");
                 }
             }
@@ -109,10 +108,11 @@ public final class GolfScreen extends JFrame {
 
     }
 
-    public static GolfScreen getInstance() {
-        if (INSTANCE == null) {
+    public static GolfScreen getInstance(){
+        if (INSTANCE == null){
             INSTANCE = new GolfScreen();
-        } else INSTANCE.setVisible(true);
+        } else
+            INSTANCE.setVisible(true);
         return INSTANCE;
     }
 }
