@@ -6,14 +6,14 @@ import java.awt.event.ActionListener;
 
 public final class LoginScreen extends JFrame {
 
-    private static final String USERNAME1 = "reception";
-    private static final String PASSWORD1 = "reception";
+    private static final String USERNAME1 = "test";
+    private static final String PASSWORD1 = "test";
 
-    private static final String USERNAME2 = "bar";
-    private static final String PASSWORD2 = "bar";
+    private static final String USERNAME2 = "test";
+    private static final String PASSWORD2 = "test";
 
-    private static final String USERNAME3 = "activities";
-    private static final String PASSWORD3 = "activities";
+    private static final String USERNAME3 = "test";
+    private static final String PASSWORD3 = "test";
     private static LoginScreen INSTANCE = null;
     private JTextField usernameField;
     private JPasswordField passwordField;
