@@ -1,6 +1,5 @@
 package reservations;
 
-import activities.Room;
 import com.toedter.calendar.JDateChooser;
 import controllers.Main;
 import controllers.Registry;

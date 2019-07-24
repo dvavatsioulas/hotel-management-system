@@ -1,7 +1,5 @@
 package reservations;
 
-import activities.Room;
-
 import java.io.Serializable;
 
 public class Reservation implements Serializable{

@@ -1,4 +1,4 @@
-package activities;
+package reservations;
 
 import java.io.Serializable;
 

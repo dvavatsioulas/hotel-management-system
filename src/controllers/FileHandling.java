@@ -10,7 +10,7 @@ public class FileHandling{
 
     public static void readReservationsFromFile(){
         try{
-            File rsv = new File("src/controllers/ReservationsData.db");
+            File rsv = new File("src/reservations/ReservationsData.db");
             String rsvabs = rsv.getCanonicalPath();
             File file = new File(rsvabs);
 
@@ -35,7 +35,7 @@ public class FileHandling{
 
     public static void readRoomsFromFile(){
         try{
-            File rooms = new File("src/controllers/RoomsData.db");
+            File rooms = new File("src/reservations/RoomsData.db");
             String roomsabs = rooms.getCanonicalPath();
             File file = new File(roomsabs);
 
@@ -61,7 +61,7 @@ public class FileHandling{
             File rsv = new File("ReservationsData.db");
             rsv.delete();
 
-            FileOutputStream fos = new FileOutputStream("src/controllers/ReservationsData.db");
+            FileOutputStream fos = new FileOutputStream("src/reservations/ReservationsData.db");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(Registry.reservations);
             oos.close();
@@ -77,7 +77,7 @@ public class FileHandling{
             File rooms = new File("RoomsData.db");
             rooms.delete();
 
-            FileOutputStream fos = new FileOutputStream("src/controllers/RoomsData.db");
+            FileOutputStream fos = new FileOutputStream("src/reservations/RoomsData.db");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(Registry.rooms);
             oos.close();
