@@ -1,6 +1,6 @@
-# HotelManagement
-A simple Hotel Management System, which handles Reservations, Bar Orders and Extra Activities.  
-This project has been made for training and academic purposes, and specifically made  to comply with the Assignment Requirements of the "Software Technology" course.  
+# Hotel Management System
+A simple <b>Hotel Management System</b>, which handles Reservations, Bar Orders and Extra Activities.  
+This project has been made for academic purposes, and specifically built to comply with the Assignment Requirements of the "Software Technology" course.  
 
 -- NOTE --  
 Make sure ReservationsData.db and RoomsData.db are in the same directory with the executable .jar file.  
