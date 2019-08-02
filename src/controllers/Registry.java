@@ -1,8 +1,8 @@
 package controllers;
 
-import reservations.Room;
 import reservations.Reservation;
 import reservations.ReservationsScreen;
+import reservations.Room;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -17,18 +17,19 @@ public abstract class Registry{
     public static Random random = new Random();
 
     public static ReservationsScreen RS = new ReservationsScreen();
-	public static void createRooms() { // dimiourgoume tin lista me ta domatia tou ksenodoxeioy. o arithmos ton krevatiwn epilegetai apo ti random gia kathe domatio
-		int i;
 
-		for(i=101;i<101+DOMATIA_PROTOU_OROFOU;i++) //PROTOS OROFOS
-		rooms.add(new reservations.Room(i, random.nextInt(4)+1,true));
+    public static void createRooms(){ // dimiourgoume tin lista me ta domatia tou ksenodoxeioy. o arithmos ton krevatiwn epilegetai apo ti random gia kathe domatio
+        int i;
 
-		for(i=201;i<201+DOMATIA_DEUTEROU_OROFOU;i++) //DEUTEROS OROFOS
-			rooms.add(new reservations.Room(i, random.nextInt(4)+1,true));
+        for (i = 101; i < 101 + DOMATIA_PROTOU_OROFOU; i++) //PROTOS OROFOS
+            rooms.add(new reservations.Room(i, random.nextInt(4) + 1, true));
 
-		for(i=301;i<301+DOMATIA_TRITOU_OROFOU;i++) //TRITOS OROFOS
-			rooms.add(new reservations.Room(i, random.nextInt(4)+1,true));
-	}
+        for (i = 201; i < 201 + DOMATIA_DEUTEROU_OROFOU; i++) //DEUTEROS OROFOS
+            rooms.add(new reservations.Room(i, random.nextInt(4) + 1, true));
+
+        for (i = 301; i < 301 + DOMATIA_TRITOU_OROFOU; i++) //TRITOS OROFOS
+            rooms.add(new reservations.Room(i, random.nextInt(4) + 1, true));
+    }
 
     public static ArrayList<Reservation> getReservations(){
         return reservations;

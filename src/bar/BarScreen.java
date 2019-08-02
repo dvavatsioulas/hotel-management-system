@@ -54,7 +54,7 @@ public final class BarScreen extends JFrame{
 
         setVisible(true);
         setResizable(false);
-        setTitle("bar.Order Screen");
+        setTitle("Εστιατόριο-Μπαρ");
         setBounds(0, 0, 807, 429);
         JPanel contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -81,7 +81,7 @@ public final class BarScreen extends JFrame{
         salads.add(new Product("Πατατοσαλάτα", 4));
 
         mainCourse.add(new Product("Μουσακάς", 7));
-        mainCourse.add(new Product("Μακαρόνια με κιμά", 6));
+        mainCourse.add(new Product("Μακαρόνια με κυμά", 6));
         mainCourse.add(new Product("Τσιπούρα", 8));
         mainCourse.add(new Product("Φακές", 7));
         mainCourse.add(new Product("Μπριζόλα με πατάτες", 9));
@@ -91,22 +91,22 @@ public final class BarScreen extends JFrame{
         panel.setLayout(null);
 
         JSpinner spinner_deserts = new JSpinner();
-        spinner_deserts.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
+        spinner_deserts.setModel(new SpinnerNumberModel(1, 1, null, new Integer(1)));
         spinner_deserts.setBounds(138, 324, 45, 22);
         panel.add(spinner_deserts);
 
         JSpinner spinner_drinks = new JSpinner();
-        spinner_drinks.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
+        spinner_drinks.setModel(new SpinnerNumberModel(1, 1, null, new Integer(1)));
         spinner_drinks.setBounds(138, 245, 45, 22);
         panel.add(spinner_drinks);
 
         JSpinner spinner_salads = new JSpinner();
-        spinner_salads.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
+        spinner_salads.setModel(new SpinnerNumberModel(1, 1, null, new Integer(1)));
         spinner_salads.setBounds(138, 81, 45, 22);
         panel.add(spinner_salads);
 
         JSpinner spinner_mainCourse = new JSpinner();
-        spinner_mainCourse.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
+        spinner_mainCourse.setModel(new SpinnerNumberModel(1, 1, null, new Integer(1)));
         spinner_mainCourse.setBounds(138, 167, 45, 22);
         panel.add(spinner_mainCourse);
 

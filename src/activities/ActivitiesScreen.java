@@ -30,7 +30,7 @@ public final class ActivitiesScreen extends JFrame{
         }
 
         setVisible(true);
-        setTitle("\u0394\u03C1\u03B1\u03C3\u03C4\u03B7\u03C1\u03B9\u03CC\u03C4\u03B7\u03C4\u03B5\u03C2");
+        setTitle("Δραστηριότητες");
         setBounds(100, 100, 450, 300);
         JPanel contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
