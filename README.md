@@ -5,9 +5,9 @@ This project has been made for academic purposes, and specifically built to comp
 -- NOTE --  
 Make sure ReservationsData.db and RoomsData.db are in the same directory with the executable .jar file.  
 Usernames and passwords for login are (username:password):  
-*  reception:reception  
+*  rec:rec  
 *  bar:bar  
-*  activities:activities  
+*  act:act  
 
 -- PROJECT INFO --  
 General
