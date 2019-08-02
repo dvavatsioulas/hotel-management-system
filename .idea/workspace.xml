@@ -2,31 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60ab2d85-f0d8-4b3d-a2a6-7db9012e7d50" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" afterPath="$PROJECT_DIR$/.project" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/bin/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotel-management-system.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-management-system.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/activities/ActivitiesScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/activities/ActivitiesScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/activities/GolfScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/activities/GolfScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/activities/GymScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/activities/GymScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/activities/MasazScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/activities/MasazScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/activities/SaunaScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/activities/SaunaScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bar/BarScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bar/BarScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bar/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bar/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bar/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bar/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/FileHandling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/FileHandling.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/HomeScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/HomeScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/LoginScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/LoginScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/Registry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/Registry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reservations/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/reservations/Reservation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reservations/ReservationsData.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/reservations/ReservationsData.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reservations/ReservationsScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/reservations/ReservationsScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reservations/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/reservations/Room.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reservations/RoomsData.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/reservations/RoomsData.db" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
